@@ -1,0 +1,89 @@
+/*Dario Manzanedo Reja*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+html{
+    font-size: 20px;
+}
+body{
+    background-color: #ebeae9;
+    font-family: "Oswald";
+    margin: 0;
+}
+header{
+    margin: 0;
+    background-color: #21383f;
+    color: #ebeae9;
+    text-align: center;
+    height: 500px;
+}
+.logo{
+    height: 100px;
+    float: left;
+}
+#rrss{
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 40px;
+    display: inline;
+    float: right;
+}
+header p{
+    padding-top: 180px;
+    margin: auto;
+    font-size: 1.27rem;
+}
+header p span{
+    display: block;
+    font-size: 4rem;
+}
+.hdbtn{
+     border: 2px solid #b75f93;
+     border-radius: 8px;
+     color: #ebeae9;
+     text-decoration: none;
+     padding: 0.5%;
+     width: 15%;
+     background-color: #b71f53;
+     display: inline-block;
+     margin-top: 4%;
+}
+.hdbtn:hover{
+    border: 2px solid #b71f53;
+    color: #ebeae9;
+    background-color: #b75f93;
+}
+main{
+    padding: 3%;
+    text-align: center;
+}
+main p{
+    margin: 0 auto 40px auto;
+    width: 80%;
+}
+.cookiebox{
+    display: none;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #1691ca;
+    opacity: 85%;
+    text-align: center;
+    padding: 40px 0;
+}
+.cookiebtn{
+    font-size: 0.8rem;
+    color: black;
+    border: 2px solid #ebeae9;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 0.1%;
+    width: 15%;
+    background-color: #ebeae9;
+    display: inline-block;
+}
+.cookiebtn:hover{
+    border: 2px solid #21383f;
+}
+footer{
+    text-align: center;
+}
