@@ -1,5 +1,5 @@
 <?php
-    define("server","localhost:80");
+    define("server","localhost");
     define("user","root");
     define("pass","");
     define("database","mindnet");

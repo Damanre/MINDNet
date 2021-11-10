@@ -16,7 +16,8 @@ CREATE TABLE usuario (
   idusuario smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   usuario varchar(50) NOT NULL,
   email varchar(100) NOT NULL,
-  f_alta date NOT NULL
+  pass varchar(250) NOT NULL,
+  f_alta datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
