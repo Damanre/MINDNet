@@ -5,6 +5,9 @@
         <link href="../style/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <header id="hdcorto">
+            <a href=""><img class="logo" src="../style/img/logo/logob.png"></a>
+        </header>
         <?php
             require_once "Class_OperacionesBBDD.php";
             require_once "Class_OperacionesEXT.php";
@@ -54,7 +57,7 @@
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='install.php'class='back'>VOLVER</a>";
                                 }else{
-                                    header("Location:install.php");//redireccion
+                                    header("Location:index.html");//redireccion
                                 }
                                 $ObjBBDD->cerrarConexion();//cerrar conexion
                             }
