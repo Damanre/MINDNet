@@ -59,14 +59,7 @@
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='install.php'class='back'>VOLVER</a>";
                                 }else{
-                                    $sql = 'INSERT INTO administrador (idusuario) VALUES (LAST_INSERT_ID());';//consulta agregar admin
-                                    $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
-                                    if($ObjBBDD->comprobarError()){//comprobar error
-                                        echo $ObjBBDD->comprobarError();
-                                        echo "<br><a href='install.php'class='back'>VOLVER</a>";
-                                    }else{
-                                        header("Location:index.html");//redireccion
-                                    }
+                                    header("Location:index.html");//redireccion
                                 }
                                 $ObjBBDD->cerrarConexion();//cerrar conexion
                             }
