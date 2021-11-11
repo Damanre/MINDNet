@@ -77,7 +77,7 @@ header{
     background-color: #b75f93;
 }
 #main1col{
-    padding: 3%;
+    padding: 1%;
     text-align: center;
 }
 #main1col p{
@@ -160,4 +160,39 @@ footer{
     border-radius: 10px;
     border: 2px solid #b75f93;
     font-weight: bold;
+}
+#logout{
+    margin: 30px;
+    float: right;
+    text-decoration: none;
+    padding: 10px;
+    width: 150px;
+    color: white;
+    background-color: #b71f53;
+    border-radius: 10px;
+    border: 2px solid #b75f93;
+    font-weight: bold;
+}
+#leftnav{
+    display: flex;
+    flex-direction: column;
+}
+.opc{
+    border: 2px solid #b75f93;
+    border-radius: 8px;
+    color: #ebeae9;
+    text-decoration: none;
+    padding: 0.5%;
+    width: 10%;
+    background-color: #b71f53;
+    display: inline-block;
+    margin-top: 2%;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: Oswald;
+}
+.opc:hover{
+    border: 2px solid #b71f53;
+    color: #ebeae9;
+    background-color: #b75f93;
 }

@@ -73,20 +73,20 @@
                                     $fila = $ObjBBDD->extraerFila($resultado);//extrae filas consulta
                                     if(comprobarHash($_POST['lpass'],$fila['pass'])){
                                         session_start();//inicia sesion y assigna variables sesion
-                                        $_SESSION["id"] = $fila["idusuario"];
+                                        $_SESSION["idusuario"] = $fila["idusuario"];
                                         $_SESSION["usuario"] = $fila["usuario"];
                                         $_SESSION["tipo"] = $fila["tipo"];
                                         if($_SESSION["tipo"]=="a"){
-                                            header("Location:homeadmin.html");//redirecion
+                                            header("Location:homeadmin.php");//redirecion
                                         }else{
                                             if($_SESSION["tipo"]=="b"){
-                                                header("Location:homealumno.html");//redirecion
+                                                header("Location:homealumno.php");//redirecion
                                             }else{
                                                 if($_SESSION["tipo"]=="p"){
-                                                    header("Location:homeprofesor.html");//redirecion
+                                                    header("Location:homeprofesor.php");//redirecion
                                                 }else{
                                                     if($_SESSION["tipo"]=="g"){
-                                                        header("Location:homegestor.html");//redirecion
+                                                        header("Location:homegestor.php");//redirecion
                                                     }
                                                 }
                                             }
