@@ -27,7 +27,7 @@ CREATE TABLE usuario (
 --
 
 CREATE TABLE administrador (
-  idusuario smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  idusuario smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
 CONSTRAINT administradoridusuario_usuarioidusuario FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,14 +38,14 @@ CONSTRAINT administradoridusuario_usuarioidusuario FOREIGN KEY (idusuario) REFER
 --
 
 CREATE TABLE alumno (
-  idusuario smallint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  premium bit NOT NULL,
+  idusuario smallint UNSIGNED NOT NULL PRIMARY KEY,
+  premium bit NOT NULL DEFAULT 0,
   nombre varchar(50) NOT NULL,
   apellidos varchar(50) NOT NULL,
   f_nac date NOT NULL,
   sexo bit NOT NULL,
   dni char(9) NOT NULL,
-  buscando bit NOT NULL,
+  buscando bit NOT NULL DEFAULT 0,
 CONSTRAINT alumnoidusuario_usuarioidusuario FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE UNIQUE INDEX dni ON alumno (dni);
@@ -62,7 +62,7 @@ CREATE TABLE solicitud_pro (
   usuario smallint(5) UNSIGNED NOT NULL,
   fecha date NOT NULL,
   doc varchar(200) NOT NULL,
-  estado bit NOT NULL,
+  estado bit NOT NULL  DEFAULT 0,
   titulo varchar(100) NOT NULL,
 CONSTRAINT solicitud_prousuario_alumnoidusuario FOREIGN KEY (usuario) REFERENCES alumno (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -101,7 +101,7 @@ CONSTRAINT idtemariotemario_sobretemariotemario FOREIGN KEY (sobretemario) REFER
 --
 
 CREATE TABLE gestor (
-  idusuario smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  idusuario smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
 CONSTRAINT gestoridusuario_usuarioidusuario FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -144,7 +144,7 @@ CONSTRAINT chatreunion_reunionidreunion FOREIGN KEY (reunion) REFERENCES reunion
 --
 
 CREATE TABLE profesor (
-  idusuario smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  idusuario smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
   certificado varchar(200) NOT NULL,
   nombre varchar(50) NOT NULL,
   apellidos varchar(50) NOT NULL,

@@ -15,13 +15,17 @@ header{
     color: #ebeae9;
     text-align: center;
 }
+#bighdtx{
+    display: block;
+    font-size: 4rem;
+}
 #hdlargo{
     height: 500px;
 }
 #hdcorto{
     height: 100px;
 }
-.logo{
+#logo{
     height: 100px;
     float: left;
 }
@@ -32,14 +36,10 @@ header{
     display: inline;
     float: right;
 }
-header p{
+#hdtx{
     padding-top: 180px;
     margin: auto;
     font-size: 1.27rem;
-}
-header p span{
-    display: block;
-    font-size: 4rem;
 }
 .hdbtn{
     border: 2px solid #b75f93;
@@ -57,16 +57,67 @@ header p span{
     color: #ebeae9;
     background-color: #b75f93;
 }
-main{
+.confirm{
+    border: 2px solid #b75f93;
+    border-radius: 8px;
+    color: #ebeae9;
+    text-decoration: none;
+    padding: 0.5%;
+    width: 40%;
+    background-color: #b71f53;
+    display: inline-block;
+    margin-top: 4%;
+    height: 3rem;
+    font-size: 1rem;
+    font-family: Oswald;
+}
+.confirm:hover{
+    border: 2px solid #b71f53;
+    color: #ebeae9;
+    background-color: #b75f93;
+}
+#main1col{
     padding: 3%;
     text-align: center;
 }
-main p{
+#main1col p{
     margin: 0 auto 40px auto;
     width: 80%;
 }
-.cookiebox{
-    display: none;
+#main2col{
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+#main2col div{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+form label{
+    margin: 0 10px;
+}
+form *{
+    margin: 0 0 15px 0;
+}
+.textbox{
+    background-color: #21383f;
+    color: #ebeae9;
+    height: 35px;
+    width: 40%;
+    font-family: Oswald;
+    font-size: 1rem;
+    text-align: center;
+}
+.rsexo{
+    transform: scale(1.5);
+    margin: 0 20px;
+}
+#cookiebox{
+    /*display: none;*/
     font-weight: bold;
     position: fixed;
     bottom: 0;
@@ -92,4 +143,21 @@ main p{
 }
 footer{
     text-align: center;
+}
+.error{
+    display: inline-block;
+    font-size: x-large;
+    color: #b71f53;
+    margin: 200px 0 40px 0;
+}
+.back{
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    width: 150px;
+    color: white;
+    background-color: #b71f53;
+    border-radius: 10px;
+    border: 2px solid #b75f93;
+    font-weight: bold;
 }

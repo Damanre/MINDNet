@@ -74,25 +74,7 @@ main div{
     flex-direction: column;
     flex: 1;
 }
-form label{
-    margin: 0 10px;
-}
-form *{
-    margin: 0 0 15px 0;
-}
-.textbox{
-    background-color: #21383f;
-    color: #ebeae9;
-    height: 35px;
-    width: 40%;
-    font-family: Oswald;
-    font-size: 1rem;
-    text-align: center;
-}
-.rsexo{
-    transform: scale(1.5);
-    margin: 0 20px;
-}
+
 #cookiebox{
     display: none;
     font-weight: bold;

@@ -6,7 +6,7 @@
     </head>
     <body>
         <header id="hdcorto">
-            <a href=""><img class="logo" src="../style/img/logo/logob.png"></a>
+            <a href=""><img id="logo" src="../style/img/logo/logob.png"></a>
         </header>
         <?php
             require_once "Class_OperacionesBBDD.php";
@@ -19,18 +19,20 @@
             }else {
                 if (!isset($_POST["Instalar"])) {//formulario agregar admin
                     echo '
+                    <main id="main1col">
                         <h1>INSTALADOR MINDNet</h1><br><br>
                         <form action="#" method="post">
                             <label for="user">USUARIO ADMINISTRADOR</label>
-                            <input type="text" name="user" placeholder="Usuario" /></br></br>
+                            <input type="text" name="user" placeholder="Usuario" class="textbox"/></br></br>
                             <label for="mail">EMAIL ADMINISTRADOR</label>
-                            <input type="email" name="mail" placeholder="Email" /></br></br>
+                            <input type="email" name="mail" placeholder="Email" class="textbox"/></br></br>
                             <label for="pass">CONTRASEÑA</label>
-                            <input type="password" name="pass" placeholder="Contraseña" /></br></br>
+                            <input type="password" name="pass" placeholder="Contraseña" class="textbox"/></br></br>
                             <label for="pass2">REPETIR CONTRASEÑA</label>
-                            <input type="password" name="pass2" placeholder="Repetir Contraseña" /></br></br>
-                            <input type="submit" class="opc" name="Instalar" value="INSTALAR" />
+                            <input type="password" name="pass2" placeholder="Repetir Contraseña" class="textbox"/></br></br>
+                            <input type="submit" class="confirm" name="Instalar" value="INSTALAR" />
                         </form>
+                    </main>
                         ';
                 } else {
                     if(empty($_POST["user"]) || empty($_POST["mail"]) || empty($_POST["pass"]) || empty($_POST["pass2"])){
@@ -57,7 +59,14 @@
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='install.php'class='back'>VOLVER</a>";
                                 }else{
-                                    header("Location:index.html");//redireccion
+                                    $sql = 'INSERT INTO administrador (idusuario) VALUES (LAST_INSTERT_ID());';//consulta agregar admin
+                                    $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
+                                    if($ObjBBDD->comprobarError()){//comprobar error
+                                        echo $ObjBBDD->comprobarError();
+                                        echo "<br><a href='install.php'class='back'>VOLVER</a>";
+                                    }else{
+                                        header("Location:index.html");//redireccion
+                                    }
                                 }
                                 $ObjBBDD->cerrarConexion();//cerrar conexion
                             }

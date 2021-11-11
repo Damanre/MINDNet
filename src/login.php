@@ -5,99 +5,112 @@
         <link href="../style/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <center>
+        <header id="hdcorto">
+            <a href="index.html"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
+        </header>
             <?php
                 include_once 'Class_OperacionesBBDD.php';
                 include_once 'Class_OperacionesEXT.php';
-                error_reporting(0);
                 //Conexion BBDD
                 $ObjBBDD=new OperacionesBBDD();
                 $ObjBBDD->conectar();
                 //Comprobar conexion BBDD
                 if ($ObjBBDD->comprobarConexion()) {
-                    echo '<h1><span class="error"">Error de conexión: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
-                    echo "<br><a href='login.php'class='back'>VOLVER</a>";
+                    echo '<h1><span class="error"">El servicio no esta disponible en este momento: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
+                    echo "<br><a href='index.html'class='confirm'>VOLVER</a>";
                 }else {
-                    echo '<h1>LOGIN</h1>';
-                    if (!isset($_POST["ip"]) && !isset($_POST["manual"]) && !isset($_POST["acceder"]) && !isset($_POST['accederip'])) {//formulario tipo de acceso
+                    if (!isset($_POST["login"]) && !isset($_POST["register"])) {
                         echo '
-                            <form action="#" method="post">
-                                <input class="btlogin" type="submit" name="ip" value="Acceso Ip" />
-                                <input class="btlogin" type="submit" name="manual" value="Acceso Manual" />
-                            </form>
+                            <main id="main2col">
+                                <div id="divlogin">
+                                    <h2>INICIAR SESION</h2>
+                                    <form action="?bt=0" method="post">
+                                        <label for="lemail">Email</label><br>
+                                        <input class="textbox" type="email" id="lemail" name="lemail"><br>
+                                        <label for="lpass">Contraseña</label><br>
+                                        <input class="textbox" type="password" id="lpass" name="lpass"><br>
+                                        <input type="submit" class="confirm" name="login" value="INICIAR SESION">
+                                    </form>
+                                </div>
+                                <div id="divreg">
+                                    <h2>REGISTRARSE</h2>
+                                    <form action="?bt=1" method="post">
+                                        <label for="rnombre">Nombre</label><br>
+                                        <input class="textbox" type="text" id="rnombre" name="rnombre"><br>
+                                        <label for="rapellidos">Apellidos</label><br>
+                                        <input class="textbox" type="text" id="rapellidos" name="rapellidos"><br>
+                                        <label>Sexo</label><br>
+                                        <label for="mas">Masculino</label>
+                                        <input type="radio" id="mas" class="rsexo" value="0" name="rsexo">
+                                        <label for="fem">Femenino</label>
+                                        <input type="radio" id="fem" class="rsexo" value="1" name="rsexo"><br><br>
+                                        <label for="rdni">NIF / NIE</label><br>
+                                        <input class="textbox" type="text" id="rdni" name="rdni"><br>
+                                        <label for="rfnac">Fecha de nacimiento</label><br>
+                                        <input class="textbox" type="date" id="rfnac" name="rfnac"><br>
+                                        <label for="rusuario">Nombre usuario</label><br>
+                                        <input class="textbox" type="text" id="rusuario" name="rusuario"><br>
+                                        <label for="remail">Email</label><br>
+                                        <input class="textbox" type="email" id="remail" name="remail"><br>
+                                        <label for="rpass">Contraseña</label><br>
+                                        <input class="textbox" type="password" id="rpass" name="rpass"><br>
+                                        <label for="rpass2">Repita la contraseña</label><br>
+                                        <input class="textbox" type="password" id="rpass2" name="rpass2"><br>
+                                        <input type="submit" class="confirm" name="register" value="REGISTRARSE">
+                                    </form>
+                                </div>
+                            </main>
                         ';
-                    }
-                    if (isset($_POST["manual"])) {//formulario acceso manual
-                        echo '
-                            <form action="#" method="post">
-                                <label for="user">Usuario</label>
-                                <input type="text" name="user" placeholder="Escribe Usuario" /></br></br>
-                                <label for="pass">Contraseña</label>                     
-                                <input type="password" name="pass" placeholder="Escribe la Contraseña" /></br></br>
-                                <input class="btlogin" type="submit" name="acceder" value="Acceder" />
-                            </form>
-                        ';
-                        echo "<br><a href='login.php'class='back'>VOLVER</a>";
-                    }
-                    if (isset($_POST["ip"])) {//formulario acceso manual
-                        echo '
-                            <form action="#" method="post">
-                                <label for="user">Direccion IP</label>
-                                <input type="text" name="Ip" placeholder="Escribe tu direccion Ip" /></br></br>
-                                <input class="btlogin" type="submit" name="accederip" value="Acceder" />
-                            </form>
-                        ';
-                        echo "<br><a href='login.php'class='back'>VOLVER</a>";
-                    }
-                    if (isset($_POST["accederip"])) {//proceso acceso automatico
-                        if(empty($_POST["Ip"])){
-                            echo '<span class="error">NO PUEDES DEJAR EN BLANCO ESTE CAMPO</span><br>';//si no existe la maquina
-                            echo "<br><a href='login.php'class='back'>VOLVER</a>";
-                        }else{
-                            $sql = "SELECT * FROM maquina AS m INNER JOIN alumno AS a ON m.IdAlumno = a.IdAlumno  WHERE m.Ip='".$_POST['Ip']."';";//consulta comprobar si existe maquina
-                            $resultado=$ObjBBDD->ejecutarConsulta($sql);//ejecuta consulta
-                            if($ObjBBDD->filasObtenidas($resultado) != 0) {//comprueba error
-                                $fila = $ObjBBDD->extraerFila($resultado);//extrae filas consulta
-                                session_start();//inicia sesion y assigna variables sesion
-                                $_SESSION["ip"] = $fila["Ip"];
-                                $_SESSION["id"] = $fila["IdAlumno"];
-                                $_SESSION["jesuita"] = $fila["Jesuita"];
-                                $_SESSION["nombre"] = $fila["Nombre"];
-                                $_SESSION["lugar"] = $fila["IdLugar"];
-                                header("Location:Visitas.php");//redireccion
-                            }else {
-                                echo '<span class="error">ACCESO INCORRECTO</span><br>';//si no existe la maquina
+                    } else {
+                        if($_GET["bt"]==0){
+                            if(empty($_POST["lemail"]) || empty($_POST["lpass"])){
+                                echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
+                                echo "<br><a href='login.php'class='back'>VOLVER</a>";
+                            }else{
+                                $sql = "SELECT * FROM usuario WHERE email = '" . $_POST["lemail"] . "' ;";//consulta comprobar si existe administrador
+                                $resultado=$ObjBBDD->ejecutarConsulta($sql);//ejecuta consulta
+                                if($ObjBBDD->filasObtenidas($resultado) != 0) {//comprueba error
+                                    $fila = $ObjBBDD->extraerFila($resultado);//extrae filas consulta
+                                    if(comprobarHash($_POST['lpass'],$fila['pass'])){
+                                        session_start();//inicia sesion y assigna variables sesion
+                                        $_SESSION["id"] = $fila["idusuario"];
+                                        $_SESSION["usuario"] = $fila["usuario"];
+                                        header("Location:index.html");//redirecion
+                                    }
+                                }
+                                echo '<span class="error">USUARIO O CONTRASEÑA<br>INCORRECTOS</span><br>';//contraseña o usuario incorrecto
                                 echo "<br><a href='login.php'class='back'>VOLVER</a>";
                             }
-                        }
-                    }
-                    if (isset($_POST["acceder"])) {//proceso acceso manual
-                        if(empty($_POST["user"]) || empty($_POST["pass"])){
-                            echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
-                            echo "<br><a href='login.php'class='back'>VOLVER</a>";
                         }else{
-                            $sql = "SELECT * FROM usuario WHERE Usuario = '" . $_POST["user"] . "' ;";//consulta comprobar si existe administrador
-                            $resultado=$ObjBBDD->ejecutarConsulta($sql);//ejecuta consulta
-                            if($ObjBBDD->filasObtenidas($resultado) != 0) {//comprueba error
-                                $fila = $ObjBBDD->extraerFila($resultado);//extrae filas consulta
-                                if(comprobarHash($_POST['pass'],$fila['Pass'])){
-                                    session_start();//inicia sesion y assigna variables sesion
-                                    $_SESSION["id"] = $fila["IdAdmin"];
-                                    $_SESSION["usuario"] = $fila["Usuario"];
-                                    $_SESSION["tipo"] = $fila["Tipo"];
-                                    if ($_SESSION["tipo"]==1){
-                                        header("Location:indexAdmin.php");//redirecion
+                            if(empty($_POST["rnombre"]) || empty($_POST["rapellidos"]) || !isset($_POST["rsexo"]) || empty($_POST["rdni"]) || empty($_POST["rfnac"]) || empty($_POST["rusuario"]) || empty($_POST["remail"]) ||empty($_POST["rpass"]) ||empty($_POST["rpass2"])){
+                                echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
+                                echo "<br><a href='login.php'class='back'>VOLVER</a>";
+                            }else{
+                                if($_POST['rpass'] != $_POST['rpass2']){//comprobar que coinciden las contraseñas
+                                    echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';//si no existe la maquina
+                                    echo "<br><a href='login.php'class='back'>VOLVER</a>";
+                                }else{
+                                    $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta) VALUES ("' . $_POST['rusuario'] . '", "' . $_POST['remail'] . '", "' . encriptar($_POST['rpass']) . '", NOW());';//consulta agregar user
+                                    $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
+                                    if($ObjBBDD->comprobarError()){//comprobar error
+                                        echo $ObjBBDD->comprobarError();
+                                        echo "<br><a href='login.php'class='back'>VOLVER</a>";
                                     }else{
-                                        header("Location:indexProfesor.php");//redirecion
+                                        $sql = 'INSERT INTO alumno (idusuario,nombre,apellidos,f_nac,sexo,dni) VALUES (LAST_INSERT_ID(), "' . $_POST['rnombre'] . '", "' . $_POST['rapellidos'] . '", "' . $_POST['rfnac'] . '", ' . $_POST['rsexo'] . ', "' . $_POST['rdni'] . '");';//consulta agregar alumno
+                                        $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
+                                        if($ObjBBDD->comprobarError()){//comprobar error
+                                            echo $ObjBBDD->comprobarError();
+                                            echo $sql;
+                                            echo "<br><a href='login.php'class='back'>VOLVER</a>";
+                                        }else {
+                                            header("Location:index.html");//redireccion
+                                        }
                                     }
                                 }
                             }
-                            echo '<span class="error">USUARIO O CONTRASEÑA<br>INCORRECTOS</span><br>';//contraseña o usuario incorrecto
-                            echo "<br><a href='login.php'class='back'>VOLVER</a>";
                         }
                     }
                 }
             ?>
-        </center>
     </body>
 </html>
