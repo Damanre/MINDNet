@@ -24,17 +24,6 @@ CREATE TABLE usuario (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla administrador
---
-
-CREATE TABLE administrador (
-  idusuario smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
-CONSTRAINT administradoridusuario_usuarioidusuario FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla alumno
 --
 
@@ -94,17 +83,6 @@ CONSTRAINT idtemariotemario_sobretemariotemario FOREIGN KEY (sobretemario) REFER
   CONSTRAINT temarioasignatura_asignaturaidasignatura FOREIGN KEY (asignatura) REFERENCES asignatura (idasignatura) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla gestor
---
-
-CREATE TABLE gestor (
-  idusuario smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
-CONSTRAINT gestoridusuario_usuarioidusuario FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 

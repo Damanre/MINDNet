@@ -6,7 +6,7 @@
     </head>
     <body>
         <header id="hdcorto">
-            <a href=""><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.html"><img id="logo" src="../style/img/logo/logob.png"></a>
         </header>
         <?php
             require_once "Class_OperacionesBBDD.php";

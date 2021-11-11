@@ -9,7 +9,7 @@
     </head>
     <body>
         <header id="hdcorto">
-            <a href=""><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.html"><img id="logo" src="../style/img/logo/logob.png"></a>
             <a id="logout" href="logout.php">CERRAR SESION</a>
         </header>
         <main id="main1col">
