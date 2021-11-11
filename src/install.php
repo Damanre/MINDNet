@@ -53,7 +53,7 @@
                                 $ObjBBDD->cerrarConexion();//cierre conexion
                                 sleep(2);//espera para que el servidor ejecute la consulta anterior a tiempo
                                 $ObjBBDD->conectar();//conexion BBDD
-                                $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta) VALUES ("' . $_POST['user'] . '", "' . $_POST['mail'] . '", "' . encriptar($_POST['pass']) . '", NOW());';//consulta agregar admin
+                                $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta,tipo) VALUES ("' . $_POST['user'] . '", "' . $_POST['mail'] . '", "' . encriptar($_POST['pass']) . '", NOW(),"a");';//consulta agregar admin
                                 $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                                 if($ObjBBDD->comprobarError()){//comprobar error
                                     echo $ObjBBDD->comprobarError();

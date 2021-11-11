@@ -75,7 +75,23 @@
                                         session_start();//inicia sesion y assigna variables sesion
                                         $_SESSION["id"] = $fila["idusuario"];
                                         $_SESSION["usuario"] = $fila["usuario"];
-                                        header("Location:index.html");//redirecion
+                                        $_SESSION["tipo"] = $fila["tipo"];
+                                        if($_SESSION["tipo"]=="a"){
+                                            header("Location:homeadmin.html");//redirecion
+                                        }else{
+                                            if($_SESSION["tipo"]=="b"){
+                                                header("Location:homealumno.html");//redirecion
+                                            }else{
+                                                if($_SESSION["tipo"]=="p"){
+                                                    header("Location:homeprofesor.html");//redirecion
+                                                }else{
+                                                    if($_SESSION["tipo"]=="g"){
+                                                        header("Location:homegestor.html");//redirecion
+                                                    }
+                                                }
+                                            }
+                                        }
+
                                     }
                                 }
                                 echo '<span class="error">USUARIO O CONTRASEÑA<br>INCORRECTOS</span><br>';//contraseña o usuario incorrecto

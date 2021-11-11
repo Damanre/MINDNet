@@ -15,9 +15,10 @@ USE mindnet;
 CREATE TABLE usuario (
   idusuario smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   usuario varchar(50) NOT NULL,
-  email varchar(100) NOT NULL,
+  email varchar(100) NOT NULL UNIQUE,
   pass varchar(250) NOT NULL,
-  f_alta datetime NOT NULL
+  f_alta datetime NOT NULL,
+  tipo char(1) NOT NULL DEFAULT "b"
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
