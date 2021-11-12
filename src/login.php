@@ -3,6 +3,9 @@
         <meta charset="UTF-8"/>
         <title>LOGIN</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+
+        <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="hdcorto">
@@ -91,7 +94,6 @@
                                                 }
                                             }
                                         }
-
                                     }
                                 }
                                 echo '<span class="error">USUARIO O CONTRASEÑA<br>INCORRECTOS</span><br>';//contraseña o usuario incorrecto
