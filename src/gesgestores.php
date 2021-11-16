@@ -33,6 +33,7 @@ session_start();
                     $resultado=$ObjBBDD->ejecutarConsulta($sql);
                     echo '<div id="listabox">';
                     echo '<h2>Gestores</h2>';
+                    echo "<br><a href='addgestor.php'class='new'>NUEVO</a>";
                     if ($ObjBBDD->filasObtenidas($resultado) > 0) {
                         echo '<table>';
                         echo '<tr>';

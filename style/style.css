@@ -249,3 +249,37 @@ td{
 .lasttd{
     width: 3%;
 }
+.new{
+    border: 2px solid #1691ca;
+    border-radius: 8px;
+    color: #ebeae9;
+    text-decoration: none;
+    padding: 0.5%;
+    width: 10%;
+    background-color: #168599;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+.new:hover{
+    border: 2px solid #168599;
+    color: #ebeae9;
+    background-color: #1691ca;
+}
+.add{
+    border: 2px solid #1691ca;
+    border-radius: 8px;
+    color: #ebeae9;
+    text-decoration: none;
+    padding: 0.5%;
+    width: 10%;
+    background-color: #168599;
+    display: inline-block;
+    margin: 50px;
+    font-size: 1rem;
+    font-family: Oswald;
+}
+.add:hover{
+    border: 2px solid #168599;
+    color: #ebeae9;
+    background-color: #1691ca;
+}
