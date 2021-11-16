@@ -41,7 +41,7 @@ session_start();
                                     $sql = "select * from alumno WHERE idusuario=".$fila["idusuario"];
                                     $resultado2=$ObjBBDD->ejecutarConsulta($sql);
                                     $fila2=$ObjBBDD->extraerFila($resultado2);
-                                    echo '<tr><td>' . $fila2["idusuario"] . '</td><td>' . $fila["email"] . '</td><td>' . $fila["usuario"] . '</td><td>' . $fila2["nombre"] . '</td><td>' . $fila2["apellidos"] . '</td><td>' . $fila2["f_nac"] . '</td><td>' . $fila["f_alta"] . '</td><td>' . $fila2["dni"] . '</td><td>' . $fila2["premium"] . '</td><td class="lasttd"><a href="delalumno.php?id='.$fila["idusuario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
+                                    echo '<tr><td>' . $fila2["idusuario"] . '</td><td>' . $fila["email"] . '</td><td>' . $fila["usuario"] . '</td><td>' . $fila2["nombre"] . '</td><td>' . $fila2["apellidos"] . '</td><td>' . $fila2["f_nac"] . '</td><td>' . $fila["f_alta"] . '</td><td>' . $fila2["dni"] . '</td><td>' . $fila2["premium"] . '</td><td class="lasttd"><a href="delusr.php?w=a&id='.$fila["idusuario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
                                 }
                                 echo '</tr>';
                                 echo '</table>';

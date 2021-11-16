@@ -29,24 +29,24 @@ session_start();
                 if (isset($_SESSION["idusuario"])) {
                     if ($_SESSION["tipo"] == "a" || $_SESSION["tipo"] == "g") {
                         echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
-                        $sql = "select * from usuario WHERE tipo='b'";
+                        $sql = "select * from usuario WHERE tipo='p'";
                         $resultado=$ObjBBDD->ejecutarConsulta($sql);
                         echo '<div id="listabox">';
-                        echo '<h2>Alumnos</h2>';
+                        echo '<h2>Profesores</h2>';
                         if ($ObjBBDD->filasObtenidas($resultado) > 0) {
                             echo '<table>';
                             echo '<tr>';
-                            echo '<th>ID</th><th>Email</th><th>Usuario</th><th>Nombre</th><th>Apellidos</th><th>Fecha Nacimiento</th><th>Fecha Alta</th><th>DNI</th><th>Premium</th>';
+                            echo '<th>ID</th><th>Email</th><th>Usuario</th><th>Nombre</th><th>Apellidos</th><th>Fecha Nacimiento</th><th>Fecha Alta</th><th>DNI</th>';
                             while ($fila = $ObjBBDD->extraerFila($resultado)) {
-                                $sql = "select * from alumno WHERE idusuario=".$fila["idusuario"];
+                                $sql = "select * from profesor WHERE idusuario=".$fila["idusuario"];
                                 $resultado2=$ObjBBDD->ejecutarConsulta($sql);
                                 $fila2=$ObjBBDD->extraerFila($resultado2);
-                                echo '<tr><td>' . $fila2["idusuario"] . '</td><td>' . $fila["email"] . '</td><td>' . $fila["usuario"] . '</td><td>' . $fila2["nombre"] . '</td><td>' . $fila2["apellidos"] . '</td><td>' . $fila2["f_nac"] . '</td><td>' . $fila["f_alta"] . '</td><td>' . $fila2["dni"] . '</td><td>' . $fila2["premium"] . '</td><td class="lasttd"><a href="delalumno.php?id='.$fila["idusuario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
+                                echo '<tr><td>' . $fila2["idusuario"] . '</td><td>' . $fila["email"] . '</td><td>' . $fila["usuario"] . '</td><td>' . $fila2["nombre"] . '</td><td>' . $fila2["apellidos"] . '</td><td>' . $fila2["f_nac"] . '</td><td>' . $fila["f_alta"] . '</td><td>' . $fila2["dni"] . '</td><td class="lasttd"><a href="../files/titulaciones/'.$fila2["certificado"].'" target="_blank"><img class="del" src="../style/img/logo/file.png"></a></td><td class="lasttd"><a href="delusr.php?w=p&id='.$fila["idusuario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
                             }
                             echo '</tr>';
                             echo '</table>';
                         } else {
-                            echo '<h3>No hay Alumnos</h3>';
+                            echo '<h3>No hay Profesores</h3>';
                         }
                         echo '</div>';
                     } else {
