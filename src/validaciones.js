@@ -7,8 +7,9 @@ x.ready(inicializarEventos); // Cuando x esté lista ejecutaremos inicializarEve
 
 function inicializarEventos()
 {
+
     $("#rnombre").blur(function(){
-        if(){
+        if(1==1){
             if(parseInt($("#rdni").val().substring(0,$("#rdni").val().length-1))%23==letra.indexOf($("#rdni").val().substr($("#rdni").val().length-1).toUpperCase())){
                 document.getElementById("rdni").style.border = "2px solid green";
             }else{

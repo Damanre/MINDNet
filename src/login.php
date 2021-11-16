@@ -4,12 +4,11 @@
         <title>LOGIN</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-
         <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="hdcorto">
-            <a href="index.html"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
+            <a href="index.php"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
         </header>
             <?php
                 include_once 'Class_OperacionesBBDD.php';
@@ -20,7 +19,7 @@
                 //Comprobar conexion BBDD
                 if ($ObjBBDD->comprobarConexion()) {
                     echo '<h1><span class="error"">El servicio no esta disponible en este momento: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
-                    echo "<br><a href='index.html'class='confirm'>VOLVER</a>";
+                    echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
                 }else {
                     if (!isset($_POST["login"]) && !isset($_POST["register"])) {
                         echo '
@@ -121,7 +120,7 @@
                                             echo $sql;
                                             echo "<br><a href='login.php'class='back'>VOLVER</a>";
                                         }else {
-                                            header("Location:index.html");//redireccion
+                                            header("Location:index.php");//redireccion
                                         }
                                     }
                                 }
@@ -130,5 +129,8 @@
                     }
                 }
             ?>
+        <footer>
+            <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
+        </footer>
     </body>
 </html>

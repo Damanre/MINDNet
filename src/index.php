@@ -4,10 +4,12 @@
         <meta charset="UTF-8">
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <title>INDEX</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="hdlargo">
-            <a href="index.html"><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
             <a href="https://www.instagram.com/djdamanre"><img class="rrss" src="../style/img/logo/instagram.png"></a>
             <a href="https://www.facebook.com/"><img class="rrss" src="../style/img/logo/facebook.png"></a>
             <a href="https://www.linkedin.com/"><img class="rrss" src="../style/img/logo/linkedin.png"></a>
@@ -42,10 +44,10 @@
                 Uso cookies en mi sitio web para brindarte una experiencia de usuario más relevante.
                 Al hacer clic en "Aceptar las cookies", aceptas el uso de todas las cookies.
             </p>
-            <a href="" class="cookiebtn">ACEPTAR TODAS LAS COOKIES</a>
+            <button id="cookiebtn">ACEPTAR TODAS LAS COOKIES</button>
         </div>
         <footer>
-            <p>Copyright © 2021 - MINDNet [Aviso Legal y Política de Privacidad]</p>
+            <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
         </footer>
     </body>
 </html>

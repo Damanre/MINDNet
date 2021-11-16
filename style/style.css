@@ -123,11 +123,12 @@ form *{
     bottom: 0;
     width: 100%;
     background-color: #1691ca;
-    opacity: 85%;
+    opacity: 90%;
     text-align: center;
     padding: 40px 0;
 }
-.cookiebtn{
+#cookiebtn{
+    font-family: Oswald;
     font-size: 0.8rem;
     color: black;
     border: 2px solid #ebeae9;
@@ -138,10 +139,12 @@ form *{
     background-color: #ebeae9;
     display: inline-block;
 }
-.cookiebtn:hover{
+#cookiebtn:hover{
     border: 2px solid #21383f;
 }
 footer{
+    padding-top: 100px;
+    font-size: 0.7rem;
     text-align: center;
 }
 .error{
@@ -173,6 +176,10 @@ footer{
     border: 2px solid #b75f93;
     font-weight: bold;
 }
+#logout:hover{
+    border: 2px solid #b71f53;
+    background-color: #b75f93;
+}
 #leftnav{
     display: flex;
     flex-direction: column;
@@ -193,6 +200,52 @@ footer{
 }
 .opc:hover{
     border: 2px solid #b71f53;
-    color: #ebeae9;
     background-color: #b75f93;
+}
+#opc1 {
+    border: 2px solid #1691ca;
+    border-radius: 8px;
+    color: #ebeae9;
+    text-decoration: none;
+    padding: 0.5%;
+    width: 10%;
+    background-color: #168599;
+    display: inline-block;
+    margin-top: 2%;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: Oswald;
+}
+#opc1:hover{
+    border: 2px solid #168599;
+    background-color: #1691ca;
+}
+#listabox{
+    width: 70%;
+    font-size: 1rem;
+    display: inline-block;
+    margin: auto;
+}
+table{
+    width: 100%;
+    margin: auto;
+}
+th{
+    font-size: 1.2rem;
+}
+td{
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 4px;
+    background-color: white;
+    border:1px solid #b75f93;
+}
+.del{
+    float: right;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+.lasttd{
+    width: 3%;
 }

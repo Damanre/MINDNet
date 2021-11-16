@@ -6,10 +6,12 @@ session_start();
         <meta charset="UTF-8"/>
         <title>GESTOR</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="hdcorto">
-            <a href="index.html"><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
             <a id="logout" href="logout.php">CERRAR SESION</a>
         </header>
         <main id="main1col">
@@ -38,5 +40,8 @@ session_start();
                 }
             ?>
         </main>
+        <footer>
+            <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
+        </footer>
     </body>
 </html>

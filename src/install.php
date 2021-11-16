@@ -6,7 +6,7 @@
     </head>
     <body>
         <header id="hdcorto">
-            <a href="index.html"><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
         </header>
         <?php
             require_once "Class_OperacionesBBDD.php";
@@ -59,7 +59,7 @@
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='install.php'class='back'>VOLVER</a>";
                                 }else{
-                                    header("Location:index.html");//redireccion
+                                    header("Location:index.php");//redireccion
                                 }
                                 $ObjBBDD->cerrarConexion();//cerrar conexion
                             }
@@ -68,6 +68,9 @@
                 }
             }
         ?>
+        <footer>
+            <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
+        </footer>
     </body>
 </html>
 
