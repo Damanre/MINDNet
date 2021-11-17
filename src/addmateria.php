@@ -4,7 +4,7 @@ session_start();
 <html lang="es">
     <head>
         <meta charset="UTF-8"/>
-        <title>AÑADIR GESTOR</title>
+        <title>AÑADIR MATERIA</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script src="validaciones.js" type="text/javascript"></script>
@@ -27,38 +27,46 @@ session_start();
                     echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
                 }else{
                     if (isset($_SESSION["idusuario"])) {
-                        if ($_SESSION["tipo"] == "a") {
+                        if ($_SESSION["tipo"] == "a" || $_SESSION["tipo"] == "g") {
                             if (!isset($_POST["add"])){
                                 echo '
-                                    <h2>AÑADIR GESTOR</h2>
+                                    <h2>AÑADIR MATERIA</h2>
                                     <form action="#" method="post">
-                                        <label for="user">USUARIO GESTOR</label>
-                                        <input type="text" name="user" placeholder="Usuario" class="textbox"/></br></br>
-                                        <label for="mail">EMAIL GESOR</label>
-                                        <input type="email" name="mail" placeholder="Email" class="textbox"/></br></br>
-                                        <label for="pass">CONTRASEÑA</label>
-                                        <input type="password" name="pass" placeholder="Contraseña" class="textbox"/></br></br>
-                                        <label for="pass2">REPETIR CONTRASEÑA</label>
-                                        <input type="password" name="pass2" placeholder="Repetir Contraseña" class="textbox"/></br>
+                                        <label for="user">NOMBRE</label>
+                                        <input type="text" name="nombre" placeholder="Nombre" class="textbox"/></br></br>
+                                        <label for="asg">ASIGNATURA (OPC)</label>
+                                        <select name="asg" class="textbox">
+                                            <option></option>
+                                            <option value="">Bucarest</option>
+                                        </select></br></br>
                                         <input type="submit" class="add" name="add" value="AÑADIR" />
                                     </form>
                                 ';
                             }else{
-                                if(empty($_POST["user"]) || empty($_POST["mail"]) || empty($_POST["pass"]) || empty($_POST["pass2"])){
-                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
-                                    echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
+                                if(empty($_POST["nombre"])){
+                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO EL NOMBRE</span><br>';//si no existe la maquina
+                                    echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                 }else{
-                                    if($_POST['pass'] != $_POST['pass2']){//comprobar que coinciden las contraseñas
-                                        echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';//si no existe la maquina
-                                        echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
-                                    }else{
-                                        $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta,tipo) VALUES ("' . $_POST['user'] . '", "' . $_POST['mail'] . '", "' . encriptar($_POST['pass']) . '", NOW(),"g");';//consulta agregar admin
+                                    if($_POST["asg"]==""){
+                                        $sql = 'INSERT INTO asignatura (nombre) VALUES ("' . $_POST['nombre'] . '");';//consulta agregar admin
                                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                                         if($ObjBBDD->comprobarError()){//comprobar error
                                             echo $ObjBBDD->comprobarError();
-                                            echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
+                                            echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                         }else{
-                                            header("Location:gesgestores.php");//redireccion
+                                            header("Location:gesmaterias.php");//redireccion
+                                        }
+                                    }else{
+                                        $sql2='SELECT * FROM asignatura WHERE idasignatura="'.$_POST["asg"].'"';
+                                        $resultado2=$ObjBBDD->ejecutarConsulta($sql2);
+                                        $fila2 = $ObjBBDD->extraerFila($resultado2);
+                                        $sql = 'INSERT INTO temario (nombre,asignatura) VALUES ("' . $_POST['nombre'] . '","' . $fila2['idasignatura'] . '");';//consulta agregar admin
+                                        $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
+                                        if($ObjBBDD->comprobarError()){//comprobar error
+                                            echo $ObjBBDD->comprobarError();
+                                            echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
+                                        }else{
+                                            header("Location:gesmaterias.php");//redireccion
                                         }
                                     }
                                 }
@@ -75,7 +83,7 @@ session_start();
                     }
                 }
             ?>
-            <br><a href='gesgestores.php'class='hdbtn'>VOLVER</a>
+            <br><a href='gesmaterias.php'class='hdbtn'>VOLVER</a>
         </main>
         <footer>
             <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
