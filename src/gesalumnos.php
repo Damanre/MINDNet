@@ -31,7 +31,7 @@ session_start();
                             echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
                             $sql = "select * from usuario WHERE tipo='b'";
                             $resultado=$ObjBBDD->ejecutarConsulta($sql);
-                            echo '<div id="listabox">';
+                            echo '<div class="listabox">';
                             echo '<h2>Alumnos</h2>';
                             if ($ObjBBDD->filasObtenidas($resultado) > 0) {
                                 echo '<table>';

@@ -85,7 +85,7 @@ header{
     width: 80%;
 }
 #main2col{
-    padding: 3%;
+    padding: 1%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -220,16 +220,17 @@ footer{
     border: 2px solid #168599;
     background-color: #1691ca;
 }
-#listabox{
+.listabox{
     width: 70%;
     font-size: 1rem;
     display: inline-block;
-    margin: auto;
+    margin: 0 auto;
 }
 table{
     width: 100%;
     margin: auto;
 }
+
 th{
     font-size: 1.2rem;
 }
@@ -243,11 +244,11 @@ td{
 .del{
     float: right;
     margin: auto;
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 .lasttd{
-    width: 3%;
+    width: 30px;
 }
 .new{
     border: 2px solid #1691ca;
@@ -258,7 +259,7 @@ td{
     width: 10%;
     background-color: #168599;
     display: inline-block;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .new:hover{
     border: 2px solid #168599;

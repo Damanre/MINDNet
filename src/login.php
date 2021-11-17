@@ -24,7 +24,7 @@
                     if (!isset($_POST["login"]) && !isset($_POST["register"])) {
                         echo '
                             <main id="main2col">
-                                <div id="divlogin">
+                                <div>
                                     <h2>INICIAR SESION</h2>
                                     <form action="?bt=0" method="post">
                                         <label for="lemail">Email</label><br>
@@ -34,7 +34,7 @@
                                         <input type="submit" class="confirm" name="login" value="INICIAR SESION">
                                     </form>
                                 </div>
-                                <div id="divreg">
+                                <div>
                                     <h2>REGISTRARSE</h2>
                                     <form action="?bt=1" method="post">
                                         <label for="rnombre">Nombre</label><br>

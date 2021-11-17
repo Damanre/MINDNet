@@ -31,7 +31,7 @@ session_start();
                     echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
                     $sql = "select * from usuario WHERE tipo='g'";
                     $resultado=$ObjBBDD->ejecutarConsulta($sql);
-                    echo '<div id="listabox">';
+                    echo '<div class="listabox">';
                     echo '<h2>Gestores</h2>';
                     echo "<br><a href='addgestor.php'class='new'>NUEVO</a>";
                     if ($ObjBBDD->filasObtenidas($resultado) > 0) {

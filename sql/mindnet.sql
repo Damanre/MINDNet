@@ -77,7 +77,7 @@ CREATE TABLE temario (
                          idtemario tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
                          nombre varchar(50) NOT NULL,
                          asignatura tinyint(3) UNSIGNED NOT NULL,
-                         sobretemario tinyint(3) UNSIGNED NOT NULL,
+                         sobretemario tinyint(3) UNSIGNED,
                          CONSTRAINT idtemariotemario_sobretemariotemario FOREIGN KEY (sobretemario) REFERENCES temario (idtemario) ON DELETE CASCADE ON UPDATE CASCADE,
                          CONSTRAINT temarioasignatura_asignaturaidasignatura FOREIGN KEY (asignatura) REFERENCES asignatura (idasignatura) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
