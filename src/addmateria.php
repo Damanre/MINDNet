@@ -23,7 +23,7 @@ session_start();
                 $ObjBBDD->conectar();
                 //Comprobar conexion BBDD
                 if ($ObjBBDD->comprobarConexion()) {
-                    echo '<h1><span class="error"">El servicio no esta disponible en este momento: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
+                    echo '<h1><span class="error">El servicio no esta disponible en este momento: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
                     echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
                 }else{
                     if (isset($_SESSION["idusuario"])) {
@@ -36,8 +36,13 @@ session_start();
                                         <input type="text" name="nombre" placeholder="Nombre" class="textbox"/></br></br>
                                         <label for="asg">ASIGNATURA (OPC)</label>
                                         <select name="asg" class="textbox">
-                                            <option></option>
-                                            <option value="">Bucarest</option>
+                                            <option></option>';
+                                $sql3='SELECT * FROM asignatura';
+                                $resultado3=$ObjBBDD->ejecutarConsulta($sql3);
+                                while ($fila3 = $ObjBBDD->extraerFila($resultado3)) {
+                                    echo'<option value="'.$fila3["idasignatura"].'">'.$fila3["nombre"].'</option>';
+                                }
+                                echo'
                                         </select></br></br>
                                         <input type="submit" class="add" name="add" value="AÑADIR" />
                                     </form>

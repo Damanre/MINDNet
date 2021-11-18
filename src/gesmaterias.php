@@ -40,7 +40,7 @@ session_start();
                             echo '<tr>';
                             echo '<th>Asignatura</th>';
                             while ($fila = $ObjBBDD->extraerFila($resultado)) {
-                                echo '<tr><td>' . $fila["nombre"] . '</td><td class="lasttd"><a href="delasi.php?id='.$fila["idasignatura"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
+                                echo '<tr><td>' . $fila["nombre"] . '</td><td class="lasttd"><a href="delasi.php?f=1&id='.$fila["idasignatura"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
                             }
                             echo '</tr>';
                             echo '</table>';
@@ -60,7 +60,7 @@ session_start();
                                 $sql = "select * from asignatura WHERE idasignatura=".$fila["asignatura"];
                                 $resultado2=$ObjBBDD->ejecutarConsulta($sql);
                                 $fila2 = $ObjBBDD->extraerFila($resultado2);
-                                echo '<tr><td>' . $fila["nombre"] . '</td><td>' . $fila2["nombre"] . '</td><td class="lasttd"><a href="deltem.php?id='.$fila["idtemario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
+                                echo '<tr><td>' . $fila["nombre"] . '</td><td>' . $fila2["nombre"] . '</td><td class="lasttd"><a href="delasi.php?f=2&id='.$fila["idtemario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';
                             }
                             echo '</tr>';
                             echo '</table>';
