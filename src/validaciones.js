@@ -7,7 +7,6 @@ x.ready(inicializarEventos); // Cuando x esté lista ejecutaremos inicializarEve
 
 function inicializarEventos()
 {
-    refreshTable();
     $.ajax({
         url:   'gettable.php',
         type:  'post',
@@ -19,10 +18,6 @@ function inicializarEventos()
     });
 
     setInterval(inicializarEventos, 1000);
-}
-
-function refreshTable(){
-
 }
 
     $("#rnombre").blur(function(){
