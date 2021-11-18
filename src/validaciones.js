@@ -7,6 +7,23 @@ x.ready(inicializarEventos); // Cuando x esté lista ejecutaremos inicializarEve
 
 function inicializarEventos()
 {
+    refreshTable();
+    $.ajax({
+        url:   'gettable.php',
+        type:  'post',
+        datatype: 'php',
+        async: 'true',
+        success:  function (datos) {
+            document.getElementById("tabla").innerHTML = datos;
+        }
+    });
+
+    setInterval(inicializarEventos, 1000);
+}
+
+function refreshTable(){
+
+}
 
     $("#rnombre").blur(function(){
         if(1==1){
@@ -30,6 +47,4 @@ function inicializarEventos()
             document.getElementById("rdni").style.border = "2px solid red";
         };
     });
-
-}
 
