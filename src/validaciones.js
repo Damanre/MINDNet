@@ -7,17 +7,21 @@ x.ready(inicializarEventos); // Cuando x esté lista ejecutaremos inicializarEve
 
 function inicializarEventos()
 {
+    repetir();
+    setInterval(repetir, 500);
+}
+
+function repetir(){
     $.ajax({
         url:   'gettable.php',
         type:  'post',
         datatype: 'php',
         async: 'true',
         success:  function (datos) {
-            document.getElementById("tabla").innerHTML = datos;
+            document.getElementById("tabla").innerHTML=datos;
         }
     });
 
-    setInterval(inicializarEventos, 1000);
 }
 
     $("#rnombre").blur(function(){

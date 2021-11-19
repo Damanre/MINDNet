@@ -8,7 +8,7 @@ $sql = "select * from reunion";
 $resultado=$ObjBBDD->ejecutarConsulta($sql);
 echo '<h2>Reuniones</h2>';
 if ($ObjBBDD->filasObtenidas($resultado) > 0) {
-    echo '<table id="tabla">';
+    echo '<table>';
     echo '<tr>';
     echo '<th>ID</th><th>Usuario 1</th><th>Usuario 2</th><th>Asignatura</th><th>Temario</th><th>Duracion</th>';
     while ($fila = $ObjBBDD->extraerFila($resultado)) {
@@ -24,10 +24,22 @@ if ($ObjBBDD->filasObtenidas($resultado) > 0) {
         $sql4 = "select * from asignatura WHERE idasignatura=" . $fila5['asignatura'];
         $resultado4=$ObjBBDD->ejecutarConsulta($sql4);
         $fila4 = $ObjBBDD->extraerFila($resultado4);
-        $date1 = new DateTime(date("Y-m-d h:i:s"));
-        $date2 = new DateTime($fila["fecha"]);
-        $diff = $date1->diff($date2);
-        echo '<tr><td>' . $fila["idreunion"] . '</td><td>' . $fila2["usuario"] . '</td><td>' . $fila3["usuario"] . '</td><td>' . $fila4["nombre"] . '</td><td>' . $fila5["nombre"] . '</td><td>' .$diff->h.' h '.$diff->i.' Min '.$diff->s. ' Sec </td></tr>';
+        if($fila["activa"]==1){
+            $date1 = new DateTime(date("Y-m-d G:i:s"));
+            $date2 = new DateTime($fila["inicio"]);
+            $diff = $date2->diff($date1);
+            echo '<tr><td>' . $fila["idreunion"] . '</td><td>' . $fila2["usuario"] . '</td><td>' . $fila3["usuario"] . '</td><td>' . $fila4["nombre"] . '</td><td>' . $fila5["nombre"] . '</td><td>' .$diff->d.' d ' .$diff->h. ' h '.$diff->i.' Min '.$diff->s. ' Sec </td></tr>';
+            $date1=0;
+            $date2=0;
+        }else{
+            $date1 = new DateTime($fila["inicio"]);
+            $date2 = new DateTime($fila["fin"]);
+            $diff = $date1->diff($date2);
+            echo '<tr><td>' . $fila["idreunion"] . '</td><td>' . $fila2["usuario"] . '</td><td>' . $fila3["usuario"] . '</td><td>' . $fila4["nombre"] . '</td><td>' . $fila5["nombre"] . '</td><td>' .$diff->d.' d ' .$diff->h.' h '.$diff->i.' Min '.$diff->s. ' Sec </td></tr>';
+            $date1=0;
+            $date2=0;
+        }
+
     }
     echo '</tr>';
     echo '</table>';

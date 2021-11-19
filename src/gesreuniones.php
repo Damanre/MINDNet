@@ -32,9 +32,6 @@ session_start();
                         $sql = "select * from reunion";
                         $resultado=$ObjBBDD->ejecutarConsulta($sql);
                         echo '<div class="listabox" id="tabla">';
-
-
-
                         echo '</div>';
                     } else {
                         echo '<span class="error">NO PUEDES ACCEDER A ESTE SITIO</span>
