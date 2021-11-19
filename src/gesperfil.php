@@ -72,8 +72,16 @@ session_start();
                                         <button class="confirm" id="edit">EDITAR</button><br>
                                         <input type="submit" class="confirm" name="edit" value="GUARDAR" >
                                     </form>
-                                    <br><a href="homealumno.php"class="hdbtn">VOLVER</a>
+                                    
                             ';
+                                if($_SESSION["tipo"]=="b"){
+                                    echo "<br><a href='homealumno.php' class='hdbtn'>VOLVER</a>";
+                                }else{
+                                    if($_SESSION["tipo"]=="p"){
+                                        echo "<br><a href='homeprofesor.php' class='hdbtn'>VOLVER</a>";
+                                    }
+                                }
+
                             }
                         }else{
                             if(empty($_POST["rnombre"]) || empty($_POST["rapellidos"]) || !isset($_POST["rsexo"]) || empty($_POST["rdni"]) || empty($_POST["rusuario"]) || empty($_POST["remail"])){
