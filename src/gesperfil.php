@@ -31,7 +31,12 @@ session_start();
                         if (!isset($_POST["edit"])){
                             $sql = "select * from usuario WHERE idusuario='".$_SESSION["idusuario"]."'";
                             $resultado=$ObjBBDD->ejecutarConsulta($sql);
-                            $sql = "select * from alumno WHERE idusuario='".$_SESSION["idusuario"]."'";
+                            if($_SESSION["tipo"]=="b"){
+                                $sql = "select * from alumno WHERE idusuario='".$_SESSION["idusuario"]."'";
+                            }else{
+                                $sql = "select * from profesor WHERE idusuario='".$_SESSION["idusuario"]."'";
+                            }
+
                             $resultado2=$ObjBBDD->ejecutarConsulta($sql);
                             if ($ObjBBDD->filasObtenidas($resultado) > 0) {
                                 $fila = $ObjBBDD->extraerFila($resultado);

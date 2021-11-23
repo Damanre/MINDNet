@@ -7,23 +7,12 @@ x.ready(inicializarEventos); // Cuando x esté lista ejecutaremos inicializarEve
 
 function inicializarEventos()
 {
-    repetir();
-    setInterval(repetir, 500);
+    valdni();
 }
 
-function repetir(){
-    $.ajax({
-        url:   'gettable.php',
-        type:  'post',
-        datatype: 'php',
-        async: 'true',
-        success:  function (datos) {
-            document.getElementById("tabla").innerHTML=datos;
-        }
-    });
 
-}
 
+function valdni(){
     $("#rnombre").blur(function(){
         if(1==1){
             if(parseInt($("#rdni").val().substring(0,$("#rdni").val().length-1))%23==letra.indexOf($("#rdni").val().substr($("#rdni").val().length-1).toUpperCase())){
@@ -46,4 +35,7 @@ function repetir(){
             document.getElementById("rdni").style.border = "2px solid red";
         };
     });
+}
+
+
 

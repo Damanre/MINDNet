@@ -7,7 +7,7 @@ session_start();
         <title>GESTION REUNIONES</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-        <script src="validaciones.js" type="text/javascript"></script>
+        <script src="tablaupd.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="hdcorto">
@@ -27,10 +27,8 @@ session_start();
                 echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
             }else{
                 if (isset($_SESSION["idusuario"])) {
-                    if ($_SESSION["tipo"] == "a" || $_SESSION["tipo"] == "g") {
+                    if ($_SESSION["tipo"] == "b" || $_SESSION["tipo"] == "p" || $_SESSION["tipo"] == "a" || $_SESSION["tipo"] == "g") {
                         echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
-                        $sql = "select * from reunion";
-                        $resultado=$ObjBBDD->ejecutarConsulta($sql);
                         echo '<div class="listabox" id="tabla">';
                         echo '</div>';
                     } else {
@@ -44,10 +42,18 @@ session_start();
                                 ';
                 }
             }
-            if ($_SESSION["tipo"]=="a"){
-                echo "<br><a href='homeadmin.php'class='hdbtn'>VOLVER</a>";
+            if ($_SESSION["tipo"]=="b"){
+                echo "<br><a href='homealumno.php'class='hdbtn'>VOLVER</a>";
             }else{
-                echo "<br><a href='homegestor.php'class='hdbtn'>VOLVER</a>";
+                if ($_SESSION["tipo"]=="a"){
+                    echo "<br><a href='homeadmin.php'class='hdbtn'>VOLVER</a>";
+                }else{
+                    if ($_SESSION["tipo"]=="g"){
+                        echo "<br><a href='homegestor.php'class='hdbtn'>VOLVER</a>";
+                    }else{
+                        echo "<br><a href='homeprofesor.php'class='hdbtn'>VOLVER</a>";
+                    }
+                }
             }
             ?>
         </main>

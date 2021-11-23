@@ -1,10 +1,15 @@
 <?php
+    session_start();
 include_once 'Class_OperacionesBBDD.php';
 include_once 'Class_OperacionesEXT.php';
 //Conexion BBDD
 $ObjBBDD=new OperacionesBBDD();
 $ObjBBDD->conectar();
-$sql = "select * from reunion";
+if($_SESSION["tipo"]=="b" || $_SESSION["tipo"]=="p"){
+    $sql = "select * from reunion WHERE activa=0 AND (anfitrion=".$_SESSION["idusuario"]." OR participante=".$_SESSION["idusuario"].") ORDER BY activa DESC;";
+}else{
+    $sql = "SELECT * FROM reunion ORDER BY activa DESC;";
+}
 $resultado=$ObjBBDD->ejecutarConsulta($sql);
 echo '<h2>Reuniones</h2>';
 if ($ObjBBDD->filasObtenidas($resultado) > 0) {
@@ -28,9 +33,7 @@ if ($ObjBBDD->filasObtenidas($resultado) > 0) {
             $date1 = new DateTime(date("Y-m-d G:i:s"));
             $date2 = new DateTime($fila["inicio"]);
             $diff = $date2->diff($date1);
-            echo '<tr><td>' . $fila["idreunion"] . '</td><td>' . $fila2["usuario"] . '</td><td>' . $fila3["usuario"] . '</td><td>' . $fila4["nombre"] . '</td><td>' . $fila5["nombre"] . '</td><td>' .$diff->d.' d ' .$diff->h. ' h '.$diff->i.' Min '.$diff->s. ' Sec </td></tr>';
-            $date1=0;
-            $date2=0;
+            echo '<tr class="act"><td>' . $fila["idreunion"] . '</td><td>' . $fila2["usuario"] . '</td><td>' . $fila3["usuario"] . '</td><td>' . $fila4["nombre"] . '</td><td>' . $fila5["nombre"] . '</td><td>' .$diff->d.' d ' .$diff->h. ' h '.$diff->i.' Min '.$diff->s. ' Sec </td></tr>';
         }else{
             $date1 = new DateTime($fila["inicio"]);
             $date2 = new DateTime($fila["fin"]);
