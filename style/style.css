@@ -341,7 +341,7 @@ td{
     font-size: 1rem;
 }
 #main2{
-    padding: 1%;
+    margin: 0 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -378,11 +378,10 @@ td{
     background-color: #1691ca;
 }
 #yourcam{
-    margin: 0 50px 0 0;
     display: flex;
     flex-direction: column;
-    flex: 2;
-    background-color: #21383f;
+    flex: 3;
+    height: 600px;
 }
 
 #chat{
@@ -390,5 +389,10 @@ td{
     flex-direction: column;
     flex: 1;
     background-color: #168599;
-    height: 600px;
+    height: auto;
+}
+#vid{
+    margin: auto;
+    height: 100%;
+    width: 100%;
 }

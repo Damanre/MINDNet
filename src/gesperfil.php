@@ -79,13 +79,8 @@ session_start();
                                     </form>
                                     
                             ';
-                                if($_SESSION["tipo"]=="b"){
-                                    echo "<br><a href='homealumno.php' class='hdbtn'>VOLVER</a>";
-                                }else{
-                                    if($_SESSION["tipo"]=="p"){
-                                        echo "<br><a href='homeprofesor.php' class='hdbtn'>VOLVER</a>";
-                                    }
-                                }
+
+                            echo "<br><a href='homealumno.php' class='hdbtn'>VOLVER</a>";
 
                             }
                         }else{

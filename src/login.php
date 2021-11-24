@@ -85,7 +85,7 @@
                                                 header("Location:homealumno.php");//redirecion
                                             }else{
                                                 if($_SESSION["tipo"]=="p"){
-                                                    header("Location:homeprofesor.php");//redirecion
+                                                    header("Location:homealumno.php");//redirecion
                                                 }else{
                                                     if($_SESSION["tipo"]=="g"){
                                                         header("Location:homegestor.php");//redirecion

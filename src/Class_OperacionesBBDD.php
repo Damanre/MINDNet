@@ -20,6 +20,10 @@
             return $this->conexion->query($sql);
         }
 
+        function getId(){
+            return $this->conexion->insert_id;
+        }
+
         function cerrarConexion(){//cerrar Conexion
             $this->conexion->close();
         }

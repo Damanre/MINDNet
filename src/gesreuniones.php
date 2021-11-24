@@ -51,7 +51,7 @@ session_start();
                     if ($_SESSION["tipo"]=="g"){
                         echo "<br><a href='homegestor.php'class='hdbtn'>VOLVER</a>";
                     }else{
-                        echo "<br><a href='homeprofesor.php'class='hdbtn'>VOLVER</a>";
+                        echo "<br><a href='homealumno.php'class='hdbtn'>VOLVER</a>";
                     }
                 }
             }
