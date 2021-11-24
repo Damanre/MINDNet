@@ -34,24 +34,25 @@ session_start();
                     $resultado2=$ObjBBDD->ejecutarConsulta($sql2);
                     $fila2 = $ObjBBDD->extraerFila($resultado2);
                     if($ObjBBDD->filasObtenidas($resultado2) > 0){
-                        echo '<h1>ROOM '.$fila2["idreunion"].'</h1>';
+                        $room=$fila2["idreunion"];
                         $sql = 'UPDATE reunion SET participante="' . $_SESSION["idusuario"] . '"WHERE idreunion="'.$fila2["idreunion"].'";';//consulta agregar admin
                         $ObjBBDD->ejecutarConsulta($sql);
                     }else{
                         $sql = 'INSERT INTO reunion (inicio,anfitrion,temario) VALUES (NOW(), "' . $_SESSION["idusuario"] . '", "' . $_POST["materia"] . '");';//consulta agregar admin
                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
-                        echo '<h1>ROOM '.$ObjBBDD->getId().'</h1>';
+                        $room=$ObjBBDD->getId();
                     }
+                    echo '<h1>ROOM '.$room.'</h1>';
                     echo "SELECCIONADO ".$fila["nombre"];
                     echo'
                     <main>
                         <div  id="main2">
                             <div id="yourcam">
-                            <video autoplay id="remvid">
+                            <video autoplay id="vid">
                             
                             </video>
                             <div id="mycam">
-                                <video autoplay muted id="vid">
+                                <video autoplay muted id="yourvid">
                             
                                 </video>
                             </div>
@@ -60,7 +61,7 @@ session_start();
                             
                         </div>
                         </div>
-                        <br><a href="homealumno.php"class="back">ABANDONAR</a>                        
+                        <br><a href="close.php?r='.$room.'" class="back">ABANDONAR</a>                        
                     </main>
                     ';
 
