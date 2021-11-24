@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 21:06:20
+-- Tiempo de generación: 25-11-2021 a las 00:07:10
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -75,9 +75,16 @@ CREATE TABLE `mensaje` (
   `idmensaje` int(10) UNSIGNED NOT NULL,
   `reunion` int(10) UNSIGNED NOT NULL,
   `texto` varchar(250) NOT NULL,
-  `usuario` bit(1) NOT NULL,
+  `usuario` smallint(5) UNSIGNED NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mensaje`
+--
+
+INSERT INTO `mensaje` (`idmensaje`, `reunion`, `texto`, `usuario`, `fecha`) VALUES
+(1, 28, 'HOLA', 14, '2021-11-24');
 
 -- --------------------------------------------------------
 
@@ -125,7 +132,13 @@ CREATE TABLE `reunion` (
 
 INSERT INTO `reunion` (`idreunion`, `inicio`, `fin`, `anfitrion`, `participante`, `temario`, `activa`) VALUES
 (21, '2021-11-24 21:04:41', '2021-11-24 21:05:07', 9, 9, 2, b'0'),
-(22, '2021-11-24 21:05:12', '2021-11-24 21:05:22', 9, 9, 1, b'0');
+(22, '2021-11-24 21:05:12', '2021-11-24 21:05:22', 9, 9, 1, b'0'),
+(23, '2021-11-24 23:10:47', '2021-11-24 23:12:02', 14, 14, 1, b'0'),
+(24, '2021-11-24 23:18:23', '2021-11-24 23:18:27', 14, NULL, 2, b'0'),
+(25, '2021-11-24 23:24:18', '2021-11-24 23:24:25', 14, 14, 1, b'0'),
+(26, '2021-11-24 23:37:32', '2021-11-24 23:37:36', 14, NULL, 2, b'0'),
+(27, '2021-11-24 23:37:47', '2021-11-24 23:37:53', 14, 14, 2, b'0'),
+(28, '2021-11-24 23:57:47', '2021-11-25 00:06:40', 14, 14, 2, b'0');
 
 -- --------------------------------------------------------
 
@@ -211,7 +224,8 @@ ALTER TABLE `asignatura`
 --
 ALTER TABLE `mensaje`
   ADD PRIMARY KEY (`idmensaje`),
-  ADD KEY `chatreunion_reunionidreunion` (`reunion`);
+  ADD KEY `chatreunion_reunionidreunion` (`reunion`),
+  ADD KEY `chatusuario_usuarioidusuario` (`usuario`);
 
 --
 -- Indices de la tabla `profesor`
@@ -264,13 +278,13 @@ ALTER TABLE `asignatura`
 -- AUTO_INCREMENT de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
-  MODIFY `idmensaje` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idmensaje` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `reunion`
 --
 ALTER TABLE `reunion`
-  MODIFY `idreunion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idreunion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_pro`
@@ -304,7 +318,8 @@ ALTER TABLE `alumno`
 -- Filtros para la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
-  ADD CONSTRAINT `chatreunion_reunionidreunion` FOREIGN KEY (`reunion`) REFERENCES `reunion` (`idreunion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `chatreunion_reunionidreunion` FOREIGN KEY (`reunion`) REFERENCES `reunion` (`idreunion`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chatusuario_usuarioidusuario` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `profesor`

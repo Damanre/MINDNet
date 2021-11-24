@@ -8,6 +8,7 @@ session_start();
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="cam.js"></script>
+        <script type="text/javascript" src="chat.js"></script>
     </head>
     <body>
         <header id="hdcorto">
