@@ -18,15 +18,4 @@ function repetir(){
         }
 
     });
-
-    $.ajax({
-        url:   'check.php',
-        type:  'post',
-        datatype: 'php',
-        async: 'true',
-        success:  function (datos2) {
-            document.getElementById("load").innerHTML=datos2;
-        }
-
-    });
 }
