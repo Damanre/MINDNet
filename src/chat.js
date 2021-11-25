@@ -16,6 +16,17 @@ function repetir(){
         success:  function (datos) {
             document.getElementById("chat").innerHTML=datos;
         }
+
     });
 
+    $.ajax({
+        url:   'check.php',
+        type:  'post',
+        datatype: 'php',
+        async: 'true',
+        success:  function (datos2) {
+            document.getElementById("load").innerHTML=datos2;
+        }
+
+    });
 }

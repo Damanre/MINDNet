@@ -28,6 +28,7 @@ session_start();
         }else{
             if (isset($_SESSION["idusuario"])) {
                 if ($_SESSION["tipo"] == "b" || $_SESSION["tipo"] == "p") {
+
                     $sql = 'SELECT * FROM temario WHERE idtemario='.$_POST["materia"];//consulta agregar admin
                     $resultado=$ObjBBDD->ejecutarConsulta($sql);
                     $fila = $ObjBBDD->extraerFila($resultado);
@@ -43,11 +44,12 @@ session_start();
                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                         $room=$ObjBBDD->getId();
                     }
+                    setcookie("room",$room);
                     echo '<h1>ROOM '.$room.'</h1>';
                     echo "SELECCIONADO ".$fila["nombre"];
                     echo'
-                    <main>
-                        <div  id="main2">
+                    <main id="load">
+                        <div id="main2">
                             <div id="yourcam">
                             <video autoplay id="vid">
                             
@@ -58,12 +60,19 @@ session_start();
                                 </video>
                             </div>
                         </div>
-                        <div id="chat">
+                        <div id="chatbx">
+                            <div id="chat">
                             
+                            </div>
+                            <div id="envio">
+                                <form id="ftext" method="post" action="send.php?r='.$room.'" target="_blank">
+                                    <input type="text" placeholder="Escribe un mensaje..." onclick="limpio()" name="texto" id="txbox"><input type="submit" id="send" value="ENVIAR">
+                                </form>
+                            </div>
                         </div>
-                        </div>
-                        <br><a href="close.php?r='.$room.'" class="back">ABANDONAR</a>                        
+                                              
                     </main>
+                    <br><a href="close.php?r='.$room.'" class="back">ABANDONAR</a>  
                     ';
 
                 } else {
@@ -85,4 +94,9 @@ session_start();
             <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
         </footer>
     </body>
+    <script>
+        function limpio(){
+            document.getElementById('txbox').value=null;
+        }
+    </script>
 </html>

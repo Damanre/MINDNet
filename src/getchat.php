@@ -5,7 +5,7 @@ include_once 'Class_OperacionesEXT.php';
 //Conexion BBDD
 $ObjBBDD=new OperacionesBBDD();
 $ObjBBDD->conectar();
-$sql = "select * from mensaje WHERE reunion=28 ORDER BY fecha asc;";
+$sql = "select * from mensaje WHERE reunion=".$_COOKIE['room']." ORDER BY fecha asc;";
 $resultado=$ObjBBDD->ejecutarConsulta($sql);
 if ($ObjBBDD->filasObtenidas($resultado) > 0) {
     echo '<table>';
@@ -20,7 +20,7 @@ if ($ObjBBDD->filasObtenidas($resultado) > 0) {
 
         }else{
 
-            echo '<tr><td class="youmsg">' . $fila2["usuario"] . '<br>' . $fila["texto"] . '</td></tr>';
+            echo '<tr><td class="youmsg"><b>' . $fila2["usuario"] . '</b><br>' . $fila["texto"] . '</td></tr>';
 
         }
 
