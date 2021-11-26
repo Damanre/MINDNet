@@ -8,7 +8,6 @@ const roomHash = location.hash.substring(1);
 const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
 // Room name needs to be prefixed with 'observable-'
 const roomName = 'observable-' + roomHash;
-document.cookie = "hash="+roomHash;
 const configuration = {
     iceServers: [{
         urls: 'stun:stun.l.google.com:19302'
@@ -69,11 +68,11 @@ function startWebRTC(isOfferer) {
         }
     }
 
-    // When a remote stream arrives display it in the #vid element
+    // When a remote stream arrives display it in the #remoteVideo element
     pc.ontrack = event => {
         const stream = event.streams[0];
-        if (!vid.srcObject || vid.srcObject.id !== stream.id) {
-            vid.srcObject = stream;
+        if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
+            remoteVideo.srcObject = stream;
         }
     };
 
@@ -81,8 +80,8 @@ function startWebRTC(isOfferer) {
         audio: true,
         video: true,
     }).then(stream => {
-        // Display your local video in #myvid element
-        myvid.srcObject = stream;
+        // Display your local video in #localVideo element
+        localVideo.srcObject = stream;
         // Add your stream to be sent to the conneting peer
         stream.getTracks().forEach(track => pc.addTrack(track, stream));
     }, onError);

@@ -396,3 +396,13 @@ td{
     height: 100%;
     width: 100%;
 }
+
+#myvid{
+    position: absolute;
+    bottom: 11%;
+    left: 5%;
+    border: 4px solid #b71f53;
+    height: 15%;
+    width: 15%;
+    background-color: black;
+}

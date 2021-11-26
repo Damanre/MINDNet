@@ -6,8 +6,10 @@ session_start();
         <meta charset="UTF-8"/>
         <title>REUNION</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
+        <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="cam.js"></script>
+
     </head>
     <body>
         <header id="hdcorto">
@@ -38,7 +40,7 @@ session_start();
                         $sql = 'UPDATE reunion SET participante="' . $_SESSION["idusuario"] . '"WHERE idreunion="'.$fila2["idreunion"].'";';//consulta agregar admin
                         $ObjBBDD->ejecutarConsulta($sql);
                     }else{
-                        $sql = 'INSERT INTO reunion (inicio,anfitrion,temario) VALUES (NOW(), "' . $_SESSION["idusuario"] . '", "' . $_POST["materia"] . '");';//consulta agregar admin
+                        $sql = 'INSERT INTO reunion (inicio,anfitrion,temario,seed) VALUES (NOW(), "' . $_SESSION["idusuario"] . '", "' . $_POST["materia"] . '", "' . $_COOKIE["hash"] . '");';//consulta agregar admin
                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                         $room=$ObjBBDD->getId();
                     }
@@ -49,13 +51,11 @@ session_start();
                         <div  id="main2">
                             <div id="yourcam">
                             <video autoplay id="vid">
+                                
+                            </video>
+                            <video autoplay muted id="myvid">
                             
                             </video>
-                            <div id="mycam">
-                                <video autoplay muted id="yourvid">
-                            
-                                </video>
-                            </div>
                         </div>
                         <div id="chat">
                             
