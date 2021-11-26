@@ -1,0 +1,27 @@
+{
+  "name": "mindnet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "browserify /src/video.js -o cam.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Damanre/MINDNet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Damanre/MINDNet/issues"
+  },
+  "homepage": "https://github.com/Damanre/MINDNet#readme",
+  "dependencies": {
+    "getusermedia": "^2.0.1",
+    "simple-peer": "^9.11.0"
+  }
+}

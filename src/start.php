@@ -48,6 +48,9 @@ session_start();
                     echo '<h1>ROOM '.$room.'</h1>';
                     echo "SELECCIONADO ".$fila["nombre"];
                     echo'
+                    <br><textarea id="miid"></textarea><br>
+                    <textarea id="tuid"></textarea><br>
+                    <button id="conectar">Conectar</button><br>
                     <main id="load">
                         <div id="main2">
                             <div id="yourcam">
