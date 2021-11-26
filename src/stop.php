@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "Class_OperacionesBBDD.php";
+    require_once "class_operacionesbbdd.php";
     if ($_SESSION["tipo"]=="b" || $_SESSION["tipo"]=="p") {
         $ObjBBDD=new OperacionesBBDD();
         $ObjBBDD->conectar();

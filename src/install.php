@@ -9,8 +9,8 @@
             <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
         </header>
         <?php
-            require_once "Class_OperacionesBBDD.php";
-            require_once "Class_OperacionesEXT.php";
+            require_once "class_operacionesbbdd.php";
+            require_once "class_operacionesext.php";
             $ObjBBDD=new OperacionesBBDD();
             $ObjBBDD->conectarInstalador();//Conexion BBDD
             if ($ObjBBDD->comprobarConexion()) {//Comprobar conexion BBDD
