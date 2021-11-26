@@ -11,8 +11,8 @@
             <a href="index.php"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
         </header>
             <?php
-                include_once 'Class_OperacionesBBDD.php';
-                include_once 'Class_OperacionesEXT.php';
+                include_once 'class_operacionesbbdd.php';
+                include_once 'class_operacionesext.php';
                 //Conexion BBDD
                 $ObjBBDD=new OperacionesBBDD();
                 $ObjBBDD->conectar();

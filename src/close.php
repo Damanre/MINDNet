@@ -1,8 +1,8 @@
 <?php
 
     session_start();
-    include_once 'Class_OperacionesBBDD.php';
-    include_once 'Class_OperacionesEXT.php';
+    include_once 'class_operacionesbbdd.php';
+    include_once 'class_operacionesext.php';
     //Conexion BBDD
     $ObjBBDD = new OperacionesBBDD();
     $ObjBBDD->conectar();
