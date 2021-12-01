@@ -1,5 +1,5 @@
 <?php
-    require_once "configDB.php";
+    require_once "localconfigdb.php";
     class OperacionesBBDD{
 
         public $conexion;

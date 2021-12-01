@@ -7,6 +7,7 @@ const roomHash = location.hash.substring(1);
 // TODO: Replace with your own channel ID
 const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
 // Room name needs to be prefixed with 'observable-'
+document.cookie = "hash="+roomHash;
 const roomName = 'observable-' + roomHash;
 const configuration = {
     iceServers: [{
@@ -21,6 +22,7 @@ function onSuccess() {};
 function onError(error) {
     console.error(error);
 };
+
 
 drone.on('open', error => {
     if (error) {

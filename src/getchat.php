@@ -29,5 +29,7 @@ if ($ObjBBDD->filasObtenidas($resultado) > 0) {
 } else {
     echo '<h3>Comienza a chatear</h3>';
 }
+$sqlh = 'UPDATE reunion SET seed="' . $_COOKIE["hash"] . '"WHERE idreunion="'.$_COOKIE["room"].'";';//consulta agregar admin
+$ObjBBDD->ejecutarConsulta($sqlh);
 
 ?>
