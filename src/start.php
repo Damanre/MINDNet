@@ -6,6 +6,7 @@ session_start();
         <meta charset="UTF-8"/>
         <title>REUNION</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
+        <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="cam.js"></script>
         <script type="text/javascript" src="chat.js"></script>
@@ -48,17 +49,14 @@ session_start();
                     echo '<h1>ROOM '.$room.'</h1>';
                     echo "SELECCIONADO ".$fila["nombre"];
                     echo'
-                    <br><textarea id="miid"></textarea><br>
-                    <textarea id="tuid"></textarea><br>
-                    <button id="conectar">Conectar</button><br>
                     <main id="load">
                         <div id="main2">
                             <div id="yourcam">
-                            <video autoplay id="vid">
+                            <video autoplay id="remoteVideo">
                             
                             </video>
                             <div id="mycam">
-                                <video autoplay muted id="yourvid">
+                                <video autoplay muted id="localVideo">
                             
                                 </video>
                             </div>

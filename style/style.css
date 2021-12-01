@@ -400,10 +400,11 @@ td{
 #chat::-webkit-scrollbar{
     display: none;
 }
-#vid{
+#remoteVideo{
+    border-radius: 10px;
+    border: 2px solid #b71f53;
     margin: auto;
-    height: 100%;
-    width: 100%;
+    width: 80%;
 }
 #envio{
     flex: 1;
@@ -444,4 +445,12 @@ td{
 }
 #imgnld{
     display: none;
+}
+#localVideo{
+    border-radius: 5px;
+    border: 2px solid #1691ca;
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    width: 10%;
 }
