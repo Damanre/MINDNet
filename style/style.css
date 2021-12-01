@@ -344,7 +344,6 @@ td{
     margin: 0 50px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     text-align: center;
 }
 .lnavopc{
@@ -384,25 +383,74 @@ td{
     height: 600px;
 }
 
-#chat{
+#chatbx{
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: #168599;
+    background-color: #21383f;
     height: auto;
+    color: #ebeae9;
 }
-#vid{
+#chat{
+    flex: 15;
+    height: 90%;
+    width: 100%;
+    overflow: scroll;
+}
+#chat::-webkit-scrollbar{
+    display: none;
+}
+#remoteVideo{
+    border-radius: 10px;
+    border: 2px solid #b71f53;
     margin: auto;
+    width: 80%;
+}
+#envio{
+    flex: 1;
+}
+.mymsg{
+    background-color: #168599;
+    color: #ebeae9;
+    text-align: right;
+    border-radius: 20px;
+    margin-left: 200px;
+    border: none;
+}
+.youmsg{
+    background-color: #b71f53;
+    color: #ebeae9;
+    text-align: left;
+    border-radius: 20px;
+    border: none;
+}
+#ftext input:first-child{
+    margin: 0;
+    flex: 5;
+
+}
+#ftext{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+#ftext input{
+    margin: 0;
+}
+#imgld{
+    overflow: visible;
     height: 100%;
     width: 100%;
 }
-
-#myvid{
+#imgnld{
+    display: none;
+}
+#localVideo{
+    border-radius: 5px;
+    border: 2px solid #1691ca;
     position: absolute;
-    bottom: 11%;
-    left: 5%;
-    border: 4px solid #b71f53;
-    height: 15%;
-    width: 15%;
-    background-color: black;
+    bottom: 100px;
+    left: 200px;
+    width: 10%;
 }
