@@ -1,8 +1,6 @@
 <?php
 session_start();
-?>
 
-        <?php
         include_once 'class_operacionesbbdd.php';
         include_once 'class_operacionesext.php';
         //Conexion BBDD
@@ -11,7 +9,7 @@ session_start();
         //Comprobar conexion BBDD
         if ($ObjBBDD->comprobarConexion()) {
             echo '<h1><span class="error"">El servicio no esta disponible en este momento: ' . $ObjBBDD->comprobarConexion().'</span></h1>';//Mostrar Error
-            echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
+            echo "<br><a href='https://23.2daw.esvirgua.com/MINDNet/src/index.php'class='confirm'>VOLVER</a>";
         }else{
             if (isset($_SESSION["idusuario"])) {
                 if ($_SESSION["tipo"] == "b" || $_SESSION["tipo"] == "p") {
@@ -27,6 +25,10 @@ session_start();
                         $ObjBBDD->ejecutarConsulta($sql);
                         header("Location:instart.php?r=".$room."#".$fila2["seed"]);
                     }else{
+                        $sql = 'INSERT INTO reunion (inicio,anfitrion,temario,seed) VALUES (NOW(), "' . $_SESSION["idusuario"] . '", "' . $_POST["materia"] . '", "' . $_COOKIE["hash"] . '");';//consulta agregar admin
+                        $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
+                        $room=$ObjBBDD->getId();
+                        setcookie("room",$room);
                         echo '
                         <html lang="es">
                             <head>
@@ -34,75 +36,74 @@ session_start();
                                 <title>REUNION</title>
                                 <link href="../style/style.css" rel="stylesheet" type="text/css">
                                 <script type="text/javascript" src="https://cdn.scaledrone.com/scaledrone.min.js"></script>
-                                <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-                                <script type="text/javascript" src="cam.js"></script>
-                                <script type="text/javascript" src="chat.js"></script>
+                                <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+                                <script type="text/javascript" src="https://23.2daw.esvirgua.com/MINDNet/src/chat.js"></script>
+                                <script type="text/javascript" src="https://23.2daw.esvirgua.com/MINDNet/src/cam.js"></script>
                             </head>
                             <body>
                                 <header id="hdcorto">
-                                    <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
-                                    <a id="logout" href="logout.php">CERRAR SESION</a>
+                                    <a href="https://23.2daw.esvirgua.com/MINDNet/src/index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
+                                    <a id="logout" href="https://23.2daw.esvirgua.com/MINDNet/src/logout.php">CERRAR SESION</a>
                                 </header>
                         
                         ';
-                        $sql = 'INSERT INTO reunion (inicio,anfitrion,temario,seed) VALUES (NOW(), "' . $_SESSION["idusuario"] . '", "' . $_POST["materia"] . '", "' . $_COOKIE["hash"] . '");';//consulta agregar admin
-                        $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
-                        $room=$ObjBBDD->getId();
-                        setcookie("room",$room);
+
                         echo '<h1>ROOM '.$room.'</h1>';
-                        echo "SELECCIONADO ".$fila["nombre"];
                         echo'
-                    <main id="load">
-                        <div id="main2">
-                            <div id="yourcam">
-                            <video autoplay id="remoteVideo">
-                            
-                            </video>
-                            <div id="mycam">
-                                <video autoplay muted id="localVideo">
-                            
+                        <main id="load">
+                            <div id="main2">
+                                <div id="yourcam">
+                                <video autoplay id="remoteVideo">
+                                
                                 </video>
+                                <div id="mycam">
+                                    <video autoplay muted id="localVideo">
+                                
+                                    </video>
+                                </div>
                             </div>
-                        </div>
-                        <div id="chatbx">
-                            <div id="chat">
-                            
+                            <div id="chatbx">
+                                <div id="chat">
+                                
+                                </div>
+                                <div id="envio">
+                                    <form id="ftext" method="post" action="https://23.2daw.esvirgua.com/MINDNet/src/send.php?r='.$room.'" target="_blank">
+                                        <input type="text" placeholder="Escribe un mensaje..." onclick="limpio()" name="texto" id="txbox"><input type="submit" id="send" value="ENVIAR">
+                                    </form>
+                                </div>
                             </div>
-                            <div id="envio">
-                                <form id="ftext" method="post" action="send.php?r='.$room.'" target="_blank">
-                                    <input type="text" placeholder="Escribe un mensaje..." onclick="limpio()" name="texto" id="txbox"><input type="submit" id="send" value="ENVIAR">
-                                </form>
-                            </div>
-                        </div>
-                                              
-                    </main>
-                    <br><a href="close.php?r='.$room.'" class="back">ABANDONAR</a>  
-                    ';
+                                                  
+                        </main>
+                        <br><a href="https://23.2daw.esvirgua.com/MINDNet/src/close.php?r='.$room.'" class="back">ABANDONAR</a>  
+                        ';
+                        echo'
+                    <footer>
+                        <p>Copyright © 2021 - MINDNet [<a href="https://23.2daw.esvirgua.com/MINDNet/src/alp.html">Aviso Legal y Política de Privacidad</a>]</p>
+                    </footer>
+                </body>
+                <script>
+                    function limpio(){
+                        document.getElementById("txbox").value=null;
+                    }
+                </script>
+            </html>
+            ';
                     }
 
 
                 } else {
                     echo '<span class="error">NO PUEDES ACCEDER A ESTE SITIO</span>
-                        <br><a class="back" href="login.php">VOLVER</a>
+                        <br><a class="back" href="https://23.2daw.esvirgua.com/MINDNet/src/login.php">VOLVER</a>
                     ';
                 }
             } else {
                 echo '<span class="error">NO PUEDES ACCEDER A ESTE SITIO</span>
-                    <br><a class="back" href="login.php">VOLVER</a>
+                    <br><a class="back" href="https://23.2daw.esvirgua.com/MINDNet/src/login.php">VOLVER</a>
                 ';
             }
+
         }
 
         ?>
 
-        </main>
-        <footer>
-            <p>Copyright © 2021 - MINDNet [<a href="alp.html">Aviso Legal y Política de Privacidad</a>]</p>
-        </footer>
-    </body>
-    <script>
-        function limpio(){
-            document.getElementById('txbox').value=null;
-        }
-    </script>
-</html>
+

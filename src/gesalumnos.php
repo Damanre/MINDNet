@@ -6,7 +6,7 @@ session_start();
         <meta charset="UTF-8"/>
         <title>GESTION ALUMNOS</title>
         <link href="../style/style.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>

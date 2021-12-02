@@ -10,7 +10,6 @@
         $ObjBBDD->ejecutarConsulta($sql);
     }
     echo  "<script type='text/javascript'>";
-
     echo "window.close();";
     echo "</script>";
 ?>

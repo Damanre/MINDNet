@@ -5,7 +5,7 @@ include_once 'class_operacionesext.php';
 //Conexion BBDD
 $ObjBBDD=new OperacionesBBDD();
 $ObjBBDD->conectar();
-$sql = "select * from mensaje WHERE reunion=".$_COOKIE['room']." ORDER BY fecha asc;";
+$sql = "select * from mensaje WHERE reunion=".$_COOKIE['room']." ORDER BY fecha asc";
 $resultado=$ObjBBDD->ejecutarConsulta($sql);
 if ($ObjBBDD->filasObtenidas($resultado) > 0) {
     echo '<table>';

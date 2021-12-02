@@ -1,22 +1,5 @@
 <?php
 session_start();
-?>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>REUNION</title>
-        <link href="../style/style.css" rel="stylesheet" type="text/css">
-        <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-        <script type="text/javascript" src="cam.js"></script>
-        <script type="text/javascript" src="chat.js"></script>
-    </head>
-    <body>
-    <header id="hdcorto">
-        <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
-        <a id="logout" href="logout.php">CERRAR SESION</a>
-    </header>
-<?php
 include_once 'class_operacionesbbdd.php';
 include_once 'class_operacionesext.php';
 //Conexion BBDD
@@ -31,6 +14,24 @@ if ($ObjBBDD->comprobarConexion()) {
     if ($_SESSION["tipo"] == "b" || $_SESSION["tipo"] == "p") {
         $room=$_GET["r"];
         setcookie("room",$room);
+        echo '
+                        <html lang="es">
+                            <head>
+                                <meta charset="UTF-8"/>
+                                <title>REUNION</title>
+                                <link href="../style/style.css" rel="stylesheet" type="text/css">
+                                <script type="text/javascript" src="https://cdn.scaledrone.com/scaledrone.min.js"></script>
+                                <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+                                <script type="text/javascript" src="https://23.2daw.esvirgua.com/MINDNet/src/chat.js"></script>
+                                <script type="text/javascript" src="https://23.2daw.esvirgua.com/MINDNet/src/cam.js"></script>
+                            </head>
+                            <body>
+                                <header id="hdcorto">
+                                    <a href="https://23.2daw.esvirgua.com/MINDNet/src/index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
+                                    <a id="logout" href="https://23.2daw.esvirgua.com/MINDNet/src/logout.php">CERRAR SESION</a>
+                                </header>
+                        
+                        ';
         echo '<h1>ROOM '.$room.'</h1>';
         echo'
                     <main id="load">
