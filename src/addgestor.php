@@ -58,7 +58,7 @@ session_start();
                                             echo $ObjBBDD->comprobarError();
                                             echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
                                         }else{
-                                            header("Location:gesgestores.php");//redireccion
+                                            echo "<h2>ALTA REALIZADA</h2><br><br><a href='gesgestores.php'class='back'>VOLVER</a>";
                                         }
                                     }
                                 }

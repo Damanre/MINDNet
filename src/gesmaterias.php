@@ -32,7 +32,7 @@ session_start();
                         echo "<br><a href='addmateria.php' class='new'>NUEVO</a>";
                         echo "<main id='main2col'>";
                         echo '<div>';
-                        $sql = "select * from asignatura";
+                        $sql = "select * from asignatura"; //obtener asignaturas
                         $resultado=$ObjBBDD->ejecutarConsulta($sql);
                         echo '<h2>ASIGNATURAS</h2>';
                         if ($ObjBBDD->filasObtenidas($resultado) > 0) {
@@ -49,7 +49,7 @@ session_start();
                         }
                         echo '</div>';
                         echo '<div>';
-                        $sql = "select * from temario";
+                        $sql = "select * from temario";//Obtener temarios
                         $resultado=$ObjBBDD->ejecutarConsulta($sql);
                         echo '<h2>TEMARIOS</h2>';
                         if ($ObjBBDD->filasObtenidas($resultado) > 0) {

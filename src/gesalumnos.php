@@ -29,7 +29,7 @@ session_start();
                     if (isset($_SESSION["idusuario"])) {
                         if ($_SESSION["tipo"] == "a" || $_SESSION["tipo"] == "g") {
                             echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
-                            $sql = "select * from usuario WHERE tipo='b'";
+                            $sql = "select * from usuario WHERE tipo='b'";//obtener usuarios alumnos
                             $resultado=$ObjBBDD->ejecutarConsulta($sql);
                             echo '<div class="listabox">';
                             echo '<h2>Alumnos</h2>';
@@ -38,7 +38,7 @@ session_start();
                                 echo '<tr>';
                                 echo '<th>ID</th><th>Email</th><th>Usuario</th><th>Nombre</th><th>Apellidos</th><th>Fecha Nacimiento</th><th>Fecha Alta</th><th>DNI</th><th>Premium</th>';
                                 while ($fila = $ObjBBDD->extraerFila($resultado)) {
-                                    $sql = "select * from alumno WHERE idusuario=".$fila["idusuario"];
+                                    $sql = "select * from alumno WHERE idusuario=".$fila["idusuario"];//obtener info de cada alumno
                                     $resultado2=$ObjBBDD->ejecutarConsulta($sql);
                                     $fila2=$ObjBBDD->extraerFila($resultado2);
                                     echo '<tr><td>' . $fila2["idusuario"] . '</td><td>' . $fila["email"] . '</td><td>' . $fila["usuario"] . '</td><td>' . $fila2["nombre"] . '</td><td>' . $fila2["apellidos"] . '</td><td>' . $fila2["f_nac"] . '</td><td>' . $fila["f_alta"] . '</td><td>' . $fila2["dni"] . '</td><td>' . $fila2["premium"] . '</td><td class="lasttd"><a href="delusr.php?w=a&id='.$fila["idusuario"].'"><img class="del" src="../style/img/logo/del.png"></a></td></tr>';

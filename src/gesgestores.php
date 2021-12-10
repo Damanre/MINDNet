@@ -29,7 +29,7 @@ session_start();
             if (isset($_SESSION["idusuario"])) {
                 if ($_SESSION["tipo"] == "a") {
                     echo "<h1>Hola " . $_SESSION["usuario"] . "</h1><!--mostrar nombre de usuario-->";
-                    $sql = "select * from usuario WHERE tipo='g'";
+                    $sql = "select * from usuario WHERE tipo='g'";//obtener todos los usuarios gestores
                     $resultado=$ObjBBDD->ejecutarConsulta($sql);
                     echo '<div class="listabox">';
                     echo '<h2>Gestores</h2>';

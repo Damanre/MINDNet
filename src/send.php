@@ -6,7 +6,7 @@
     $ObjBBDD=new OperacionesBBDD();
     $ObjBBDD->conectar();
     if($_SESSION["tipo"]=="b" || $_SESSION["tipo"]=="p"){
-        $sql = 'INSERT INTO mensaje (reunion,texto,usuario) VALUES ("' . $_GET['r'] . '", "' . $_POST['texto'] . '", "' . $_SESSION["idusuario"] . '");';//consulta agregar admin
+        $sql = 'INSERT INTO mensaje (reunion,texto,usuario) VALUES ("' . $_GET['r'] . '", "' . $_POST['texto'] . '", "' . $_SESSION["idusuario"] . '");';//consulta agregar mensaje
         $ObjBBDD->ejecutarConsulta($sql);
     }
     echo  "<script type='text/javascript'>";

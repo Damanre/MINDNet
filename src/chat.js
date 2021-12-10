@@ -1,8 +1,8 @@
 var c;
 c=$(document); //Creamos una nueva copia de document.
-c.ready(eventos()); // Cuando x esté lista ejecutaremos inicializarEventos
+c.ready(eventos()); // Cuando x esté lista ejecutaremos eventos()
 
-function eventos(){
+function eventos(){//Obtiene tabla de chat cada medio segundo
     repetir();
     setInterval(repetir, 500);
 }

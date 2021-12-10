@@ -20,7 +20,7 @@
             return $this->conexion->query($sql);
         }
 
-        function getId(){
+        function getId(){//Obtener ultimo id insertado en BBDD
             return $this->conexion->insert_id;
         }
 
@@ -50,7 +50,7 @@
             return $resultado->fetch_array(MYSQLI_ASSOC);
         }
 
-        function numeroError(){
+        function numeroError(){//Devuelve el numero de error
             return $this->conexion->errno;
         }
     }

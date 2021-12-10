@@ -85,7 +85,7 @@
                     echo "<br><a href='login.php'class='back'>VOLVER</a>";
                 }else{
                     session_start();
-                    $sql = "SELECT * FROM usuario WHERE email = '" . $_POST["lemail"] . "' ;";//consulta comprobar si existe administrador
+                    $sql = "SELECT * FROM usuario WHERE email = '" . $_POST["lemail"] . "' ;";//consulta para obtener los datos del inicio de sesion
                     $resultado=$ObjBBDD->ejecutarConsulta($sql);//ejecuta consulta
                     if($ObjBBDD->filasObtenidas($resultado) != 0) {//comprueba error
                         $fila = $ObjBBDD->extraerFila($resultado);//extrae filas consulta
@@ -112,18 +112,18 @@
                         }
                     }
                     echo '
-                          <html lang="es">
-                    <head>
-                        <meta charset="UTF-8"/>
-                        <title>LOGIN</title>
-                        <link href="../style/style.css" rel="stylesheet" type="text/css">
-                        <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
-                        <script src="validaciones.js" type="text/javascript"></script>
-                    </head>
-                    <body>
-                        <header id="hdcorto">
-                            <a href="index.php"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
-                        </header>
+                        <html lang="es">
+                            <head>
+                                <meta charset="UTF-8"/>
+                                <title>LOGIN</title>
+                                <link href="../style/style.css" rel="stylesheet" type="text/css">
+                                <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+                                <script src="validaciones.js" type="text/javascript"></script>
+                            </head>
+                            <body>
+                                <header id="hdcorto">
+                                    <a href="index.php"><img id="logo" alt="Logo web" src="../style/img/logo/logob.png"></a>
+                                </header>
                             <span class="error">USUARIO O CONTRASEÑA<br>INCORRECTOS</span><br>';//contraseña o usuario incorrecto
                     echo "<br><a href='login.php'class='back'>VOLVER</a>";
                 }

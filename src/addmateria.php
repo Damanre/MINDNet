@@ -10,7 +10,7 @@ session_start();
         <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
-        <header id="hdcorto">
+        <header id="hdcorto"><!--header corto-->
             <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
             <a id="logout" href="logout.php">CERRAR SESION</a>
         </header>
@@ -53,25 +53,25 @@ session_start();
                                     echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                 }else{
                                     if($_POST["asg"]==""){
-                                        $sql = 'INSERT INTO asignatura (nombre) VALUES ("' . $_POST['nombre'] . '");';//consulta agregar admin
+                                        $sql = 'INSERT INTO asignatura (nombre) VALUES ("' . $_POST['nombre'] . '");';//consulta agregar asignatura
                                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                                         if($ObjBBDD->comprobarError()){//comprobar error
                                             echo $ObjBBDD->comprobarError();
                                             echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                         }else{
-                                            header("Location:gesmaterias.php");//redireccion
+                                            echo "<h2>ALTA REALIZADA</h2><br><br><a href='gesmaterias.php'class='back'>VOLVER</a>";
                                         }
                                     }else{
                                         $sql2='SELECT * FROM asignatura WHERE idasignatura="'.$_POST["asg"].'"';
                                         $resultado2=$ObjBBDD->ejecutarConsulta($sql2);
                                         $fila2 = $ObjBBDD->extraerFila($resultado2);
-                                        $sql = 'INSERT INTO temario (nombre,asignatura) VALUES ("' . $_POST['nombre'] . '","' . $fila2['idasignatura'] . '");';//consulta agregar admin
+                                        $sql = 'INSERT INTO temario (nombre,asignatura) VALUES ("' . $_POST['nombre'] . '","' . $fila2['idasignatura'] . '");';//consulta agregar materia
                                         $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                                         if($ObjBBDD->comprobarError()){//comprobar error
                                             echo $ObjBBDD->comprobarError();
                                             echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                         }else{
-                                            header("Location:gesmaterias.php");//redireccion
+                                            echo "<h2>ALTA REALIZADA</h2><br><br><a href='gesmaterias.php'class='back'>VOLVER</a>";
                                         }
                                     }
                                 }

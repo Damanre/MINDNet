@@ -36,11 +36,11 @@
                         ';
                 } else {
                     if(empty($_POST["user"]) || empty($_POST["mail"]) || empty($_POST["pass"]) || empty($_POST["pass2"])){
-                        echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
+                        echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';
                         echo "<br><a href='install.php'class='back'>VOLVER</a>";
                     }else{
                         if($_POST['pass'] != $_POST['pass2']){//comprobar que coinciden las contraseñas
-                            echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';//si no existe la maquina
+                            echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';
                             echo "<br><a href='install.php'class='back'>VOLVER</a>";
                         }
                         else{
@@ -59,7 +59,7 @@
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='install.php'class='back'>VOLVER</a>";
                                 }else{
-                                    header("Location:index.php");//redireccion
+                                    echo "<h2>INSTALACION COMPLETADA</h2><br><br><a href='index.php' class='back'>VOLVER</a>";
                                 }
                                 $ObjBBDD->cerrarConexion();//cerrar conexion
                             }

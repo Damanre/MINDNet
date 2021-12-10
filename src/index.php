@@ -10,7 +10,7 @@
     </head>
     <body>
         <header id="hdlargo">
-            <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
+            <a href="index.php"><img alt="Logo mindnet" id="logo" src="../style/img/logo/logob.png"></a>
             <a href="https://www.instagram.com/djdamanre"><img class="rrss" src="../style/img/logo/instagram.png"></a>
             <a href="https://www.facebook.com/"><img class="rrss" src="../style/img/logo/facebook.png"></a>
             <a href="https://www.linkedin.com/"><img class="rrss" src="../style/img/logo/linkedin.png"></a>

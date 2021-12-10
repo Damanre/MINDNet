@@ -29,12 +29,12 @@ session_start();
                 if (isset($_SESSION["idusuario"])) {
                     if ($_SESSION["tipo"] == "b" || $_SESSION["tipo"] == "p") {
                         if (!isset($_POST["edit"])){
-                            $sql = "select * from usuario WHERE idusuario='".$_SESSION["idusuario"]."'";
+                            $sql = "select * from usuario WHERE idusuario='".$_SESSION["idusuario"]."'";//obtener info usuario sesion
                             $resultado=$ObjBBDD->ejecutarConsulta($sql);
                             if($_SESSION["tipo"]=="b"){
-                                $sql = "select * from alumno WHERE idusuario='".$_SESSION["idusuario"]."'";
+                                $sql = "select * from alumno WHERE idusuario='".$_SESSION["idusuario"]."'";//obtener info usuario sesion
                             }else{
-                                $sql = "select * from profesor WHERE idusuario='".$_SESSION["idusuario"]."'";
+                                $sql = "select * from profesor WHERE idusuario='".$_SESSION["idusuario"]."'";//obtener info usuario sesion
                             }
 
                             $resultado2=$ObjBBDD->ejecutarConsulta($sql);
@@ -74,7 +74,6 @@ session_start();
                                         <input class="textbox" type="text" id="rusuario" name="rusuario" value="'.$fila["usuario"].'" ><br>
                                         <label for="remail">Email</label><br>
                                         <input class="textbox" type="email" id="remail" name="remail" value="'.$fila["email"].'"><br>
-                                        <button class="confirm" id="edit">EDITAR</button><br>
                                         <input type="submit" class="confirm" name="edit" value="GUARDAR" >
                                     </form>
                                     
@@ -85,16 +84,16 @@ session_start();
                             }
                         }else{
                             if(empty($_POST["rnombre"]) || empty($_POST["rapellidos"]) || !isset($_POST["rsexo"]) || empty($_POST["rdni"]) || empty($_POST["rusuario"]) || empty($_POST["remail"])){
-                                echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
+                                echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';
                                 echo "<br><a href='gesperfil.php'class='back'>VOLVER</a>";
                             }else{
-                                $sql = 'UPDATE usuario SET usuario="' . $_POST['rusuario'] . '" ,email="' . $_POST['remail'] . '" WHERE idusuario="'.$_SESSION["idusuario"].'";';//consulta agregar admin
+                                $sql = 'UPDATE usuario SET usuario="' . $_POST['rusuario'] . '" ,email="' . $_POST['remail'] . '" WHERE idusuario="'.$_SESSION["idusuario"].'";';//consulta agregar cambios
                                 $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                                 if($ObjBBDD->comprobarError()){//comprobar error
                                     echo $ObjBBDD->comprobarError();
                                     echo "<br><a href='homealumno.php'class='back'>VOLVER</a>";
                                 }else{
-                                   header("Location:gesperfil.php");//redireccion
+                                   echo "<h2>SE HAN GUARDADO LOS CAMBIOS</h2><br><br><a href='gesperfil.php'class='back'>VOLVER</a>";
                                 }
                             }
                         }

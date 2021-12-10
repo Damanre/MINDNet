@@ -9,7 +9,7 @@ if ($_SESSION["tipo"]=="a" || $_SESSION["tipo"]=="g") {
         $id=$_GET["id"];
         $f=$_GET["f"];
         if($f==1){
-            $sql = 'DELETE FROM asignatura WHERE idasignatura="'.$id.'";';//consulta borrar lugar
+            $sql = 'DELETE FROM asignatura WHERE idasignatura="'.$id.'";';//consulta borrar asignatura
             $ObjBBDD->ejecutarConsulta( $sql);//ejecutar consulta
             if ($error = $ObjBBDD->comprobarError()) {//comprobar error
                 echo $error;
@@ -18,7 +18,7 @@ if ($_SESSION["tipo"]=="a" || $_SESSION["tipo"]=="g") {
                 header("LOCATION:gesmaterias.php");
             }
         }else{
-            $sql = 'DELETE FROM temario WHERE idtemario="'.$id.'";';//consulta borrar lugar
+            $sql = 'DELETE FROM temario WHERE idtemario="'.$id.'";';//consulta borrar temario
             $ObjBBDD->ejecutarConsulta( $sql);//ejecutar consulta
             if ($error = $ObjBBDD->comprobarError()) {//comprobar error
                 echo $error;
