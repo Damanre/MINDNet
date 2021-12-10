@@ -49,7 +49,7 @@ session_start();
                                 ';
                             }else{
                                 if(empty($_POST["nombre"])){
-                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO EL NOMBRE</span><br>';//si no existe la maquina
+                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO EL NOMBRE</span><br>';
                                     echo "<br><a href='addmateria.php'class='back'>VOLVER</a>";
                                 }else{
                                     if($_POST["asg"]==""){

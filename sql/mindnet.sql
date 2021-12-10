@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `mindnet`
 --
+USE `user2daw_BD1-23`;
 
 -- --------------------------------------------------------
 
@@ -33,9 +34,8 @@ CREATE TABLE `alumno` (
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `f_nac` date NOT NULL,
-  `sexo` bit(1) NOT NULL,
-  `dni` char(9) NOT NULL,
-  `buscando` bit(1) NOT NULL DEFAULT b'0'
+  `sexo` CHAR(1) NOT NULL,
+  `dni` char(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -43,7 +43,9 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`idusuario`, `premium`, `nombre`, `apellidos`, `f_nac`, `sexo`, `dni`, `buscando`) VALUES
-(14, b'0', 'Dario', 'Manzanedo Reja', '2001-05-10', b'0', '80096493M', b'0');
+(10, b'0', 'Dario', 'Manzanedo Reja', '2001-05-10', 'h', '80096493M'),
+(11, b'0', 'Selu', 'Delgado', '2001-06-20', 'o', '80054246S'),
+(12, b'0', 'Marta', 'Broncano Suarez', '2001-10-14', 'm', '84234875J');
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,8 @@ CREATE TABLE `asignatura` (
 INSERT INTO `asignatura` (`idasignatura`, `nombre`) VALUES
 (1, 'Matematicas'),
 (2, 'Lengua'),
-(3, 'CCSS');
+(3, 'Informatica'),
+(4, 'CCSS');
 
 -- --------------------------------------------------------
 
@@ -76,17 +79,9 @@ CREATE TABLE `mensaje` (
   `reunion` int(10) UNSIGNED NOT NULL,
   `texto` varchar(250) NOT NULL,
   `usuario` smallint(5) UNSIGNED NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` datetime NOT NULL DEFAULT NOW()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `mensaje`
---
-
-INSERT INTO `mensaje` (`idmensaje`, `reunion`, `texto`, `usuario`, `fecha`) VALUES
-(1, 28, 'HOLA', 14, '2021-11-24');
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `profesor`
@@ -98,9 +93,8 @@ CREATE TABLE `profesor` (
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `f_nac` date NOT NULL,
-  `sexo` bit(1) NOT NULL,
-  `dni` char(9) NOT NULL,
-  `buscando` bit(1) NOT NULL DEFAULT b'0'
+  `sexo` char(1) NOT NULL,
+  `dni` char(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -108,7 +102,8 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`idusuario`, `certificado`, `nombre`, `apellidos`, `f_nac`, `sexo`, `dni`, `buscando`) VALUES
-(9, 'prueba.pdf', 'Isabel', 'Muñoz', '2021-11-01', b'1', '80096656M', b'0');
+(20, 'prueba.pdf', 'Isabel', 'Muñoz', '2021-11-01', 'm', '80096656M');
+(21, 'prueba.pdf', 'Manuel ', 'Merino', '2021-01-21', 'h', '80054856W');
 
 -- --------------------------------------------------------
 
@@ -123,24 +118,10 @@ CREATE TABLE `reunion` (
   `anfitrion` smallint(5) UNSIGNED NOT NULL,
   `participante` smallint(5) UNSIGNED DEFAULT NULL,
   `temario` tinyint(3) UNSIGNED NOT NULL,
-  `activa` bit(1) NOT NULL DEFAULT b'1'
+  `activa` bit(1) NOT NULL DEFAULT b'1',
+  `seed` char(6);
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `reunion`
---
-
-INSERT INTO `reunion` (`idreunion`, `inicio`, `fin`, `anfitrion`, `participante`, `temario`, `activa`) VALUES
-(21, '2021-11-24 21:04:41', '2021-11-24 21:05:07', 9, 9, 2, b'0'),
-(22, '2021-11-24 21:05:12', '2021-11-24 21:05:22', 9, 9, 1, b'0'),
-(23, '2021-11-24 23:10:47', '2021-11-24 23:12:02', 14, 14, 1, b'0'),
-(24, '2021-11-24 23:18:23', '2021-11-24 23:18:27', 14, NULL, 2, b'0'),
-(25, '2021-11-24 23:24:18', '2021-11-24 23:24:25', 14, 14, 1, b'0'),
-(26, '2021-11-24 23:37:32', '2021-11-24 23:37:36', 14, NULL, 2, b'0'),
-(27, '2021-11-24 23:37:47', '2021-11-24 23:37:53', 14, 14, 2, b'0'),
-(28, '2021-11-24 23:57:47', '2021-11-25 00:06:40', 14, 14, 2, b'0');
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `solicitud_pro`
@@ -172,8 +153,13 @@ CREATE TABLE `temario` (
 --
 
 INSERT INTO `temario` (`idtemario`, `nombre`, `asignatura`) VALUES
-(1, 'Sintaxis', 2),
-(2, 'Multiplicaciones', 1);
+(1, 'Multiplicaciones', 1),
+(2, 'Divisiones', 1),
+(3, 'Suma y Resta', 1),
+(4, 'Sintaxis', 2),
+(5, 'Acentuacion', 2),
+(6, 'Hardware', 5),
+(7, 'Relieve', 4);
 
 -- --------------------------------------------------------
 
@@ -196,15 +182,12 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `usuario`, `email`, `pass`, `f_alta`, `tipo`) VALUES
 (1, 'Admin', 'admin@mind.net', '$2y$10$FPLmzlQxv0UKKhxJzIGI1.e5H4.9BD9MEjrgRqmHXNw0r/usWwBSa', '2021-11-16 13:09:05', 'a'),
-(7, 'Gestor1', 'gestion@mind.net', '$2y$10$FPLmzlQxv0UKKhxJzIGI1.e5H4.9BD9MEjrgRqmHXNw0r/usWwBSa', '2021-11-16 16:55:52', 'g'),
-(9, 'Imuñoz', 'imunoz@evg.es', '$2y$10$fOJ7zhYn5nw4Su0QgyaR9uTJX0qRS5uh0j2DquIrynixHUyLttqQW', '2021-11-16 17:06:16', 'p'),
-(10, 'Gestor2', 'ges2@gss.com', '$2y$10$FVjvKYSBRu7kVs1sJO8hqObA3t6zdjqYxbWI9ogBCqyVmLVEX2jri', '2021-11-16 18:20:19', 'g'),
-(14, 'Damanre', 'damanre.dmr@gmail.com', '$2y$10$eUXK4hMHVGN05Bk6fu84EuxSY.Cl6Bd1W7iGTByBQwULaIB1DcR7i', '2021-11-24 20:39:22', 'b'),
-(15, 'Gestor4', 'gestor4@gmail.com', '$2y$10$f7PG8o2emMLeuC8uV7mM4OG8ijJpIXfscVsPpZt/U15liaE42iUza', '2021-11-24 20:51:58', 'g');
+(21, 'Mmerino', 'mmerino@evg.es', '$2y$10$fOJ7zhYn5nw4Su0QgyaR9uTJX0qRS5uh0j2DquIrynixHUyLttqQW', '2021-11-16 16:55:52', 'p'),
+(20, 'Imuñoz', 'imunoz@evg.es', '$2y$10$fOJ7zhYn5nw4Su0QgyaR9uTJX0qRS5uh0j2DquIrynixHUyLttqQW', '2021-11-16 17:06:16', 'p'),
+(11, 'Sdelgado', 'sdelgado@gmail.com', '$2y$10$FVjvKYSBRu7kVs1sJO8hqObA3t6zdjqYxbWI9ogBCqyVmLVEX2jri', '2021-11-16 18:20:19', 'b'),
+(10, 'Damanre', 'damanre.dmr@gmail.com', '$2y$10$eUXK4hMHVGN05Bk6fu84EuxSY.Cl6Bd1W7iGTByBQwULaIB1DcR7i', '2021-11-24 20:39:22', 'g'),
+(12, 'Mbroncano', 'mbroncano@gmail.com', '$2y$10$f7PG8o2emMLeuC8uV7mM4OG8ijJpIXfscVsPpZt/U15liaE42iUza', '2021-11-24 20:51:58', 'b');
 
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `alumno`

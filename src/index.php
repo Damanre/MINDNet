@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/x-icon" href="../style/img/logo/icon.png">
         <link href="../style/style.css" rel="stylesheet" type="text/css">
         <title>INDEX</title>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>

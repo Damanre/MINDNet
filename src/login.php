@@ -41,11 +41,13 @@
                             <input class="textbox" type="text" id="rnombre" name="rnombre"><br>
                             <label for="rapellidos">Apellidos</label><br>
                             <input class="textbox" type="text" id="rapellidos" name="rapellidos"><br>
-                            <label>Sexo</label><br>
+                            <label>Genero</label><br>
                             <label for="mas">Masculino</label>
-                            <input type="radio" id="mas" class="rsexo" value="0" name="rsexo">
+                            <input type="radio" id="mas" class="rsexo" value="h" name="rsexo">
                             <label for="fem">Femenino</label>
-                            <input type="radio" id="fem" class="rsexo" value="1" name="rsexo"><br><br>
+                            <input type="radio" id="fem" class="rsexo" value="m" name="rsexo">
+                            <label for="oth">Otro</label>
+                            <input type="radio" id="oth" class="rsexo" value="o" name="rsexo"><br><br>
                             <label for="rdni">NIF / NIE</label><br>
                             <input class="textbox" type="text" id="rdni" name="rdni"><br>
                             <label for="rfnac">Fecha de nacimiento</label><br>
@@ -166,7 +168,7 @@
                             echo $ObjBBDD->comprobarError();
                             echo "<br><a href='login.php'class='back'>VOLVER</a>";
                         }else{
-                            $sql = 'INSERT INTO alumno (idusuario,nombre,apellidos,f_nac,sexo,dni) VALUES (LAST_INSERT_ID(), "' . $_POST['rnombre'] . '", "' . $_POST['rapellidos'] . '", "' . $_POST['rfnac'] . '", ' . $_POST['rsexo'] . ', "' . $_POST['rdni'] . '");';//consulta agregar alumno
+                            $sql = 'INSERT INTO alumno (idusuario,nombre,apellidos,f_nac,sexo,dni) VALUES (LAST_INSERT_ID(), "' . $_POST['rnombre'] . '", "' . $_POST['rapellidos'] . '", "' . $_POST['rfnac'] . '", "' . $_POST['rsexo'] . '", "' . $_POST['rdni'] . '");';//consulta agregar alumno
                             $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
                             if($ObjBBDD->comprobarError()){//comprobar error
                                 echo $ObjBBDD->comprobarError();

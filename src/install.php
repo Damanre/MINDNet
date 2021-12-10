@@ -44,7 +44,7 @@
                             echo "<br><a href='install.php'class='back'>VOLVER</a>";
                         }
                         else{
-                            $sql = file_get_contents("../sql/mindnet.sql");//consulta script bbdd
+                            $sql = file_get_contents("../sql/clear_mindnet.sql");//consulta script bbdd
                             $ObjBBDD->ejecutarMultiConsulta($sql);//ejecutar consulta
                             if($ObjBBDD->comprobarError()) {//comprobar error
                                 echo $ObjBBDD->comprobarError();

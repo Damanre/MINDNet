@@ -10,7 +10,7 @@ session_start();
         <script src="validaciones.js" type="text/javascript"></script>
     </head>
     <body>
-        <header id="hdcorto">
+        <header id="hdcorto"><!--Header corto-->
             <a href="index.php"><img id="logo" src="../style/img/logo/logob.png"></a>
             <a id="logout" href="logout.php">CERRAR SESION</a>
         </header>
@@ -27,9 +27,9 @@ session_start();
                     echo "<br><a href='index.php'class='confirm'>VOLVER</a>";
                 }else{
                     if (isset($_SESSION["idusuario"])) {
-                        if ($_SESSION["tipo"] == "a") {
+                        if ($_SESSION["tipo"] == "a") {//Proteccion de acceso por url
                             if (!isset($_POST["add"])){
-                                echo '
+                                echo '<!--formulario de añadir gestor-->
                                     <h2>AÑADIR GESTOR</h2>
                                     <form action="#" method="post">
                                         <label for="user">USUARIO GESTOR</label>
@@ -44,17 +44,17 @@ session_start();
                                     </form>
                                 ';
                             }else{
-                                if(empty($_POST["user"]) || empty($_POST["mail"]) || empty($_POST["pass"]) || empty($_POST["pass2"])){
-                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';//si no existe la maquina
+                                if(empty($_POST["user"]) || empty($_POST["mail"]) || empty($_POST["pass"]) || empty($_POST["pass2"])){//Comprobar campos vacios
+                                    echo '<span class="error">NO PUEDES DEJAR EN BLANCO NINGUN CAMPO</span><br>';
                                     echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
                                 }else{
                                     if($_POST['pass'] != $_POST['pass2']){//comprobar que coinciden las contraseñas
-                                        echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';//si no existe la maquina
+                                        echo '<span class="error">NO COINCIDEN LAS CONTRASEÑAS</span><br>';
                                         echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
                                     }else{
-                                        $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta,tipo) VALUES ("' . $_POST['user'] . '", "' . $_POST['mail'] . '", "' . encriptar($_POST['pass']) . '", NOW(),"g");';//consulta agregar admin
-                                        $ObjBBDD->ejecutarConsulta($sql);//ejecutar consulta
-                                        if($ObjBBDD->comprobarError()){//comprobar error
+                                        $sql = 'INSERT INTO usuario (usuario,email,pass,f_alta,tipo) VALUES ("' . $_POST['user'] . '", "' . $_POST['mail'] . '", "' . encriptar($_POST['pass']) . '", NOW(),"g");';//consulta agregar gestor
+                                        $ObjBBDD->ejecutarConsulta($sql);
+                                        if($ObjBBDD->comprobarError()){
                                             echo $ObjBBDD->comprobarError();
                                             echo "<br><a href='addgestor.php'class='back'>VOLVER</a>";
                                         }else{

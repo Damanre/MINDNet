@@ -35,7 +35,11 @@ function valdni(){
             document.getElementById("rdni").style.border = "2px solid red";
         };
     });
+    $("#cookiebtn").click(function(){
+        $("#cookiebox").fadeOut();
+    });
 }
+
 
 
 
